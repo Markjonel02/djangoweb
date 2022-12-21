@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% if title %}
+    <title>Login Form - {{Login}}</title>
+    {% else %}
+    <title>Login Form</title>
+    {% endif %}
+
+
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'assets/css/register.css'%}">
+</head>
+
+<body>
+
+
+    <div class="container1">
+
+
+
+        <form class="form" method="POST">
+            {% csrf_token %}
+            <div class="form-input-error-message text-center">
+                {% for message in messages %} {% if 'error' in message.tags %}
+                <p style="color:red; text-align:center;">{{message}}</p>
+                {% endif %} {% endfor %}
+            </div>
+            <h1 class="form-title">Login</h1>
+
+            <div class="form-input-group">
+                <input type="text" class="form-input" name="username" autofocus placeholder="Username">
+
+            </div>
+            <div class="form-input-group">
+                <input type="password" class="form-input" name="password" autofocus placeholder="Password">
+
+            </div>
+
+            <button class="form-button" type="submit" style="margin-bottom:10px;">Login</button>
+
+            <button class="form-button" type="submit" style="background-color:darkgrey;text-decoration:none;color:antiquewhite;"> <a href="{% url 'base' %}"style="color:#fff;" >Login as Guest</a> </button>
+
+            <p class="form-text">
+                <a href="{% url 'register'%}" id="linkCreateAccount" class="form-link">Don't have an account?<u>click here</u></a>
+                <br>
+                <a href="#" class="form-link" style="color: black;">Forgot account?</a>
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>

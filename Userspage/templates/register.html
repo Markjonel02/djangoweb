@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> {% if title %}
+    <title>Register Form - {{form}}</title> {% else %}
+    <title>Register</title> {% endif %}
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/register.css'%}">
+</head>
+
+<body>
+
+    <div class="container1 ">
+
+        <div class="form-input-error-message">
+            <!-- ====== if statement and looping for error messages ========-->
+            {% if messages %} {% for message in messages %}
+            <p style="text-align:center;">{{message}}</p>
+            {% endfor %} {% endif %}
+
+        </div>
+
+        <!--     <div class="success" onload="wc()">
+            {% for register in messages %} {% if 'success' in message.tags %}
+            <p style="color:green; text-align:center;">{{message}}</p>
+            {% endif %} {% endfor %}
+
+        </div> -->
+
+
+
+        <form class="form" method="POST">
+            {% csrf_token %}
+            <h1 class="form-title">Register</h1>
+            <div class="form-input-group">
+                <input type="text" class="form-input" name="username" autofocus placeholder="Username">
+
+            </div>
+            <div class="form-input-group">
+                <input type="email" class="form-input" name="email" autofocus placeholder="email">
+                <div class="form-input-error-message"></div>
+            </div>
+            <div class="form-input-group">
+                <input type="password" class="form-input" name="password1" autofocus placeholder="Password">
+                <div class="form-input-error-message"></div>
+            </div>
+            <input type="password" class="form-input" name="password2" autofocus placeholder="confirm Password">
+            <div class="form-input-group">
+                <div class="form-input-error-message"></div>
+            </div>
+
+            <button class="form-button" type="submit">Register</button>
+
+            <p class="form-text ">
+                <a href="{% url 'login'%} " id="linkCreateAccount " class="form-link ">Already have an account?<u>click here</u></a>
+            </p>
+        </form>
+    </div>
+
+
+
+
+</body>
+
+</html>

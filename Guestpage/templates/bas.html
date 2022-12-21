@@ -1,0 +1,353 @@
+{% load static%}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Dunmark tileshop</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
+
+
+    <!-- ========== Start ohter links ========== -->
+    <link rel="stylesheet" href="{%static 'assets/bootstrap/css/bootstrap.min.css' %} ">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,400i,600,700&amp;display=swap">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome5-overrides.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animated-services.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Billing-Table-with-Add-Row--Fixed-Header-Feature.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Bootstrap-4---Photo-Gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Clock-Real-Time.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/dropdown-search-bs4.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Footer-Clean-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Google-Style-Text-Input.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/Landing-Page---Parallax-Background---Logo-Heading-ButtonGIF.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Multi-step-form.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Pretty-Footer-.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Pretty-Registration-Form-.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Pretty-Search-Form-.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Search-Input-Responsive-with-Icon.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Search-Input-responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Toggle-Switch-1.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Toggle-Switch-toggle-switch.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/Toggle-Switch.css' %}">
+
+    <!-- ========== End ohter links ========== -->
+</head>
+
+<body>
+    <style>
+        * {
+            text-decoration: none;
+            box-sizing: border-box;
+            font-family: "Space Grotesk", sans-serif;
+            list-style-type: none;
+        }
+        
+        header {
+            font-family: "Space Grotesk", sans-serif;
+        }
+        
+        body {
+            background-color: #F9F9F9;
+        }
+        
+        y #about {
+            top: 50px;
+            border: 1px solid gray;
+            text-align: center;
+        }
+        
+        body::-webkit-scrollbar {
+            width: 10px;
+            height: 8px;
+            background-color: #000D20;
+            scroll-behavior: smooth;
+        }
+        
+        body::-webkit-scrollbar-thumb {
+            background: #6d6d6d;
+        }
+    </style>
+    <header style="position:absolute;overflow:hidden;" class="border-bottom-1 shadow-sm">
+        <!-- place navbar here -->
+        <!-- Nav tabs -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm" style="background-color: #000D20;">
+            <div class="container ">
+                <a class="navbar-brand " href="#"><span class="text-light fs-2 fw-bold shadow-lg m-0 p-0" >Dunmark Tileshop</span></a>
+                <button class="navbar-toggler hidden-lg-up" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars fa-sm  "></i></button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0 fs-5 ms-3 ">
+                        <li class="nav-item">
+                            <a class="nav-link active text-light " href="{% url 'home' %}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light " href="#Contact">Contact</a>
+                        </li>
+
+                    </ul>
+                    <form class=" d-flex my-2 my-lg-0 ">
+                        <button class="btn btn-danger my-2 my-sm-0 " type="button "><a href=" " class="text-light text-decoration-none ">Login</a></button>
+                        <button class="btn btn-primary my-2 my-sm-0 ms-2 " type="button "><a href="" class="text-light text-decoration-none ">Register</a></button>
+
+                    </form>
+
+                </div>
+            </div>
+        </nav>
+
+
+
+    </header>
+    <main style="overflow:hidden; ">
+        <div class="container-home" style="margin: 20px auto;">{% block home %}{% endblock home %}
+        </div>
+
+        <!-- ========== Start Section ========== -->
+        <section style="margin: 50px; text-align:center;">
+            <h1 style="color: #000D20;font:700 normal 38px "> Guests</h1>
+        </section>
+        <!-- ========== End Section ========== -->
+
+
+        </div>
+        </div>
+        <div class="row d-flex justify-content-center align-items-center " style="width:110%;overflow: auto;" id="gallery">
+            <div class="col m-0">
+                <div>
+                    <div class="shadow-sm" id="box-2" style="position: static;">
+                        <div></div>
+                        <a href="#"></a>
+                        <h1 class="display-2 fw-bolder text-center text-white d-flex justify-content-center align-items-center align-content-center flex-wrap mb-3" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200" style="margin: 20%;">DUNMARK TILE SHOP</h1>
+                        <h1 class="text-center d-flex justify-content-center align-items-center align-content-center flex-wrap" data-aos="fade" data-aos-duration="2000" data-aos-delay="1300" id="heading1" style="font-size: 2em;">YOUR NEIGHBORHOOD STORE</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--- Tile Gallery-->
+        <div class="container">
+        </div>
+        <h3 class="text-center " style="margin-top: 50px; ">Tile Gallery</h3>
+        <div class="container "></div>
+        <div class="photo-gallery " style="background-color: #F9F9F9; ">
+            <div class="container-fluid ">
+                <div class="px-lg-5 ">
+
+                    <div class="row " style="overflow-y: scroll; ">
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm p-1 "><img src="https://images.pexels.com/photos/220152/pexels-photo-220152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata brown 247 x 296</a></h5>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm ">
+                                <img src="https://images.pexels.com/photos/11285344/pexels-photo-11285344.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top " height="200px ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">alice white 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+                        <!-- Gallery item -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4 ">
+                            <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
+                                <div class="p-4 ">
+                                    <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
+                                    <p class="small text-muted mb-0 "></p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End -->
+
+
+
+    </main>
+    <footer id="Contact">
+        <!-- place footer here -->
+        <div class="row ">
+            <div class="col-sm-6 col-md-4 footer-navigation ">
+                <h2><a class="link-secondary " href="# ">Dunmark Tile Shop</a></h2>
+                <p class="company-name ">Company Name © 2015 </p>
+            </div>
+            <div class="col-sm-6 col-md-4 footer-contacts ">
+                <div><span class="text-bg-primary fa fa-map-marker footer-contacts-icon " data-bss-hover-animate="wobble "> </span>
+                    <p class="text-primary "><span class="new-line-span ">1940, 0106 Manila E Rd</span>Calumpang,Binangonan</p>
+                </div>
+                <div><i class="fa fa-phone text-bg-primary footer-contacts-icon " data-bss-hover-animate="wobble "></i>
+                    <p class="text-primary footer-center-info email text-start "> (02) 7213 0543</p>
+                </div>
+                <div><i class="fa fa-envelope text-bg-primary footer-contacts-icon " data-bss-hover-animate="wobble "></i>
+                    <p> <a href="# " target="_blank ">support@company.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-4 footer-about ">
+                <h4 class="text-primary ">About the company</h4>
+                <p> Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet. </p>
+                <div class="social-links social-icons "><a class="text-bg-primary " data-bss-hover-animate="wobble " href="# "><i class="fa fa-facebook "></i></a></div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js " integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3 " crossorigin="anonymous ">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js " integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz " crossorigin="anonymous ">
+    </script>
+    <!-- ========== Start ohter js link ========== -->
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %} "></script>
+    <script src="{% static 'assets/js/chart.min.js' %} "></script>
+    <script src="{% static 'assets/js/bs-init.js' %} "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js "></script>
+    <script src="{% static 'assets/js/Billing-Table-with-Add-Row--Fixed-Header-Feature.js' %} "></script>
+    <script src="{% static 'assets/js/Clock-Real-Time.js' %} "></script>
+    <script src="{% static 'assets/js/dropdown-search-bs4.js' %} "></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js "></script>
+    <script src="{% static 'assets/js/Lightbox-Gallery.js' %} "></script>
+    <script src="{% static 'assets/js/Multi-step-form.js' %} "></script>
+    <script src="{% static 'assets/js/theme.js' %} "></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js " integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin=" anonymous "></script>
+
+    <!-- ========== End ohter js link ========== -->
+</body>
+
+</html>
