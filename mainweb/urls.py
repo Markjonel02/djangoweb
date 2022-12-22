@@ -3,7 +3,7 @@ from .import views as admin_views
  
 urlpatterns = [
   
-    path('',admin_views.dashboard, name="dashboard"),    
-    path('index/',admin_views.index, name="index"),
-
+        path('',admin_views.dashboard, name="dash"),
+        path('customers',admin_views.custom, name="customer"),
+        
  ]

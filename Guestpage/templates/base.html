@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="{%static 'assets/css/Landing-Page---Parallax-Background---Logo-Heading-ButtonGIF.css' %}">
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/-Filterable-Gallery-with-Lightbox-BS4--Filterable-Gallery.css' %}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <style>
     body {
@@ -60,12 +58,16 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span>Dunmark Tileshop</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link active" data-bss-hover-animate="pulse" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="#box-2">Products</a></li>
+                    <li class="nav-item "><a class="nav-link active" data-bss-hover-animate="pulse" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link " data-bss-hover-animate="pulse" href="#box-2">Products</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="">Tile calculator</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="#promo">Promos</a></li>
                     <li class="nav-item"><a class="nav-link" data-bss-hover-animate="pulse" href="#contact">Contacts</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" data-bss-hover-animate="pulse" href="signup.html">Sign up</a>
+                </ul>
+                <button disabled type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bss-hover-animate="pulse" loop="True">
+                    Log In
+                  </button>
+
             </div>
         </div>
     </nav>
@@ -95,10 +97,39 @@
             </div>
         </div>
     </header>
+
+    <!-- Modal -->
+    <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h3 class="modal-title " id="exampleModalLabel" style="color: black;">Modal title</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" data></button>
+                </div>
+                <div class="modal-body">
+
+                    ....
+
+                    <div class=" signin text-center">
+
+                        <a href="" class="text-dark"><img src="{% static 'assets/img/sign-in-with-google-icon-3.jpg' %}" style="width:14rem; height:auto"></a>
+                    </div>
+
+                    <form method="POST">
+                        {% csrf_token %} hello {{form.as_p}}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ========== Start Banner ========== -->
     <section>
         <div>
-            <div id="box-2">
+            <div id="box-2" data->
                 <h1 class="display-1 text-white" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300" id="heading-1" style="margin-top: 20%;text-shadow:burlywood 4px 1px 5px">DUNMARK TILESHOP</h1>
                 <h1 class="display-1" data-aos="fade" data-aos-duration="1300" data-aos-delay="600" id="heading1" style="font-size: 30px; text-shadow: burlywood 1px 2px 3px ">Your Neighborhood Store</h1>
             </div>
@@ -113,7 +144,7 @@
         <div class="toast-container"></div>
         <section class="py-5">
             <div class="container" data-aos="fade-right" data-aos-duration="300" data-aos-delay="400">
-                <h1 class="text-center text-dark">Products</h1>
+                <h1 class="text-center text-dark">Products Category</h1>
                 <div class="filtr-controls"><span class="text-capitalize active" data-filter="all" style="transform: scale(1);">all </span><span class="text-capitalize" data-filter="1">Adhesive</span><span class="text-capitalize" data-filter="2">Porcelain</span><span class="text-capitalize"
                         data-filter="3">Ceramic</span><span class="text-capitalize" data-filter="3">Skimcoat</span><span data-filter="3" class="text-capitalize">Sanitary ware</span></div>
             </div>
@@ -267,24 +298,18 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- End -->
+
                         </div>
 
     </section>
     <!-- ========== End Section ========== -->
 
 
-
     <section class="py-5">
-        <div class="container text-center py-5" data-aos="zoom-in-up" data-aos-duration="500" data-aos-delay="300">
-            <p class="mb-4" style="font-size: 1.6rem;">Used by <span class="bg-success-light p-1"><strong>2400+</strong></span>&nbsp;of the best companies in the world.</p>
-            <a href="#"> <img class="m-3" src="{%static 'assets/img/brands/instacart.png'%}"></a>
-            <a href="#"> <img class="m-3" src="{%static 'assets/img/brands/kickstarter.png'%}"></a>
-            <a href="#"> <img class="m-3" src="{%static 'assets/img/brands/lyft.png'%}"></a>
-            <a href="#"> <img class="m-3" src="{%static 'assets/img/brands/shopify.png'%}"></a>
-            <a href="#"> <img class="m-3" src="{%static 'assets/img/brands/pinterest.png'%}"></a>
-            <a href="#"> <img class="m-3" src="{%static 'assets/img/brands/twitter.png'%}"></a>
+        <div class="container">
+
         </div>
+
     </section>
     <section>
         <div class="container shadow-sm bg-primary-gradient py-5" id="promo">
@@ -552,6 +577,14 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.nav-link').click(function() {
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
     </script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="{% static 'assets/bootstrap/js/banner.min.js' %}"></script>
