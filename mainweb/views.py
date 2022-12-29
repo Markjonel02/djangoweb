@@ -1,22 +1,30 @@
 from django.shortcuts import render, redirect 
-from .models import CreateNewList
-from .forms import NewList
+from .models import Customers_crud
+from .forms import Customers_crudForm
 
 
 def dashboard(request):
     return render(request, 'dashboard.html')
 
-def custom(request):
-    return render(request, 'customersprofile.html')
+def custom_list(request):
+    customers_crud = Customers_crud.objects.all()
+    context = {
+        'customers_crud':customers_crud
+    }
+    return render(request, 'customersprofile.html',context)
 
-def Create(request):
+#creating list and pass it to customers list 
+def create_list(request):
+    form = Customers_crudForm()
+    
     if request.method == 'POST':
-        name = request.POST.get('name')
-        contact = request.POST.get('contact')
-        email = request.POST.get('email')
-        address = request.POST.get('address')
-        obj = NewList.objects.Create(name=name, contact=contact, email=email, address=address)
-        obj.save()
-        return redirect('customer')
-         
-   
+        form = Customers_crudForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('customers')
+        
+        context = {
+            'form':form
+        }
+        return render(request, 'create_crud.html',context)
+    

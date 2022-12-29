@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'Userspage.apps.UserspageConfig',
     'mainweb.apps.MainwebConfig',
     'Guestpage.apps.GuestpageConfig',
+    'CrudSamp.apps.CrudsampConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -84,7 +85,7 @@ ROOT_URLCONF = 'projectmain.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [], #include this inside BASE_DIR / 'templates'
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

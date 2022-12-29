@@ -1,13 +1,13 @@
-from .models import CreateNewList
+from .models import Customers_crud
 from django import forms
 from django.forms import ModelForm
-from django.contrib.auth.models import User
-class NewList(forms.ModelForm):
-    email = forms.EmailField(required=True)
-  
+
+#Crud Form
+class Customers_crudForm(ModelForm):
+    
     class Meta:
-        model = CreateNewList
-        fields = ('name','contact','email','address')
+        model = Customers_crud
+        fields = '__all__'
         
         
         

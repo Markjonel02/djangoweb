@@ -21,13 +21,6 @@ urlpatterns = [
     path('guest/', include('Guestpage.urls')),
     path('Guestpage/', include('allauth.urls')),
     path('main/', include('mainweb.urls')),
+    path('crud/',include('CrudSamp.urls')),
     path('admin/', admin.site.urls),
-    
-    
-    
-   
-    
-    
-    
-    
 ]

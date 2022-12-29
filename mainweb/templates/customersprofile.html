@@ -22,27 +22,10 @@
                                         </div>
                                         <div class="modal-body" style="background: #F4F5FF;">
                                             <div class="col-md-8 offset-md-2 offset-xxl-2">
-                                                <form class="custom-form" method="POST">
-                                                    <div class="row form-group" style="margin-bottom: 5px;">
-                                                        <div class="col-sm-4 col-lg-6 text-center label-column"></div>
-                                                        <div class="col-sm-6 col-lg-12 input-column">
-                                                            <input class="form-control form-floating" type="text" placeholder="Customers Name" style="border-bottom: 3px solid var(--bs-blue);margin-bottom: 10px;padding-top: 5px;padding-bottom: 5px;background: #fff;"></div>
-                                                    </div>
-                                                    <div class="row form-group" style="margin-bottom: 5px;">
-                                                        <div class="col-sm-6 col-lg-12 input-column">
-                                                            <input class="form-control" type="number" placeholder="Contact Number" inputmode="latin-name" style="border-bottom: 3px solid var(--bs-blue);margin-bottom: 10px;padding-top: 5px;padding-bottom: 5px;"></div>
-                                                    </div>
-                                                    <div class="row form-group">
-                                                        <div class="col-sm-4 label-column"></div>
-                                                        <div class="col-sm-6 col-lg-12 input-column">
-                                                            <input class="form-control" type="email" inputmode="latin-name" style="border-bottom: 3px solid var(--bs-blue);margin-bottom: 10px;padding-top: 5px;padding-bottom: 5px;" name="email" placeholder="Email">
-                                                            <input class="form-control form-floating" type="text" inputmode="latin-name" style="border-bottom: 3px solid var(--bs-blue);margin-bottom: 10px;padding-top: 5px;padding-bottom: 5px;" name="address" placeholder="Address"></div>
-                                                    </div>
-                                                </form>
+                                                {%include 'crudmain/create_crud.html' %}
                                             </div>
                                         </div>
-                                        <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
-                                    </div>
+                                        <!--                                         <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>--></div>
                                 </div>
                             </div>
                         </div>
@@ -63,13 +46,13 @@
                         </thead>
                         <tbody>
 
-                            {% for i in NewList %}
+                            {% for i in customers_crud %}
                             <tr>
 
-                                <td>{{i.name}}</td>
-                                <td>{{i.contact}}</td>
-                                <td>{{i.email}}</td>
-                                <td>{{i.address}}&nbsp;</td>
+                                <td>{{i.CustomersName}}</td>
+                                <td>{{i.ContactNumber}}</td>
+                                <td>{{i.CustomersEmail}}</td>
+                                <td>{{i.CustomersAdd}}&nbsp;</td>
                                 <td><button class="btn btn-primary text-center bg-dark shadow-sm" data-bss-hover-animate="pulse" type="button">Edit</button></td>
                                 <tr>
                                 </tr>
