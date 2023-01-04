@@ -19,7 +19,7 @@ def register_request(request):
 			return redirect('dash')
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
-	return render (request=request, template_name='register.html', context={'Register form':form})
+	return render (request, 'usertemp/register.html', context={'Register form':form})
 
     #login Form
 
@@ -30,16 +30,19 @@ def login_request(request):
 		if form.is_valid():
 			username = form.cleaned_data.get('username')
 			password = form.cleaned_data.get('password')
-			user = authenticate(username=username, password=password)
+			user = authenticate(request, username=username, password=password)
 			if user is not None:
+       #log the user in 
 				login(request, user)
+    #redirect to dashboard
 				return redirect('dash')    
 			else:
 				messages.error(request,'Invalid username or password.')
 		else:
+      #this will return to login form if the user input a incorrect username or password 
 			messages.error(request,"Invalid username or password.")
 	form = AuthenticationForm()
-	return render(request=request, template_name='login.html', context={'Login':form})
+	return render(request=request, template_name='usertemp/login.html', context={'Login':form})
 
 
 

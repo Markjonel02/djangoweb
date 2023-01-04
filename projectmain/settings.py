@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google', #for google auth
 ]
+
 AUTHENTICATION_BACKENDS = (
  #used for default signin such as loggin into admin panel
  'django.contrib.auth.backends.ModelBackend', 
@@ -85,7 +86,7 @@ ROOT_URLCONF = 'projectmain.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [], #include this inside BASE_DIR / 'templates'
+        'DIRS': [ BASE_DIR / 'templates'], #include this inside BASE_DIR / 'templates'
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

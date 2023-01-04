@@ -45,8 +45,8 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" data-aos="fade" href="{%url 'dash' %}"><i class="fas fa-tachometer-alt" style="font-size: 14px;"></i><span>Dashboard</span></a><a class="nav-link" href="{%url 'customer_list'%}"><i class="fas fa-user"></i><span>Customers Profile</span></a>
-                        <a class="nav-link" href="Pos.html"><i class="far fa-chart-bar"></i><span>Point of Sale&nbsp;</span></a><a class="nav-link" href="inventory2.html"><i class="fas fa-store-alt"></i><span>Inventory Management</span></a>
+                    <li class="nav-item"><a class="nav-link active" data-aos="fade" href="{%url 'dash' %}"><i class="fas fa-tachometer-alt" style="font-size: 14px;"></i><span>Dashboard</span></a><a class="nav-link" href="{%url 'customer_list' %}"><i class="fas fa-user"></i><span>Customers Profile</span></a>
+                        <a class="nav-link" href="Pos.html"><i class="far fa-chart-bar"></i><span>Point of Sale&nbsp;</span></a><a class="nav-link" href="{%url 'product'%}"><i class="fas fa-store-alt"></i><span>Product Management</span></a>
                         <a class="nav-link" href="usermanagement1.html"><i class="fas fa-user"></i><span>User Management</span></a><a class="nav-link" href="sales1.html"><i class="far fa-chart-bar"></i><span>Sales&nbsp;</span></a></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
@@ -130,7 +130,7 @@
                 </nav>
 
 
-                <div class="content overflow-x-auto"> {% block content%} {% endblock %}</div>
+                <div class="content"> {% block content%}{% endblock %}</div>
             </div><a class="border rounded d-inline scroll-to-top" href="#page-top" style="background: rgb(78,115,223);"><i class="fas fa-angle-up"></i></a>
         </div>
         <script>
@@ -138,6 +138,15 @@
                 alert("You've Logged out successfully")
             }
         </script>
+        <script>
+            $(document).ready(function() {
+                $('#combo').on('change', function() {
+                    var selectedValue = $(this).val();
+                    $('#inputfield').val(selectedValue);
+                });
+            });
+        </script>
+
         <script src="{% static 'assets/bootstrap/js/bootstrap dashboard.min.js' %}"></script>
         <script src="{% static 'assets/js/webmainjs/chart.min.js' %}"></script>
         <script src="{% static 'assets/js/webmainjs/bs-init.js' %}"></script>

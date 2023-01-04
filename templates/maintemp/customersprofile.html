@@ -1,0 +1,105 @@
+{%extends 'maintemp/base_d.html'%}{%block content%}
+<div id="wrapper">
+
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+
+            <div class="container-fluid pt-3" style="overflow: auto;background: #F4F5FF;opacity: 1;filter: brightness(102%);">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-dark mb-0 fw-bold" style="--bs-body-font-weight: normal;font-size: 2.1rem;">Customer Profile</h3>
+                </div>
+            </div>
+            <div class="container d-flex justify-content-end">
+                <button type="button" class="btn btn-primary m-3  justify-content-end" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add Customer</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Customers Info</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-floating mb-2 ">
+                                        <input name="CustomersName" type="text" class="form-control fs-6 " id="floatingInput" placeholder="name@example.com">
+                                        <label for="floatingInput">Customers Name </label>
+                                    </div>
+                                    <div class="form-floating mb-2">
+                                        <input name="ContactNumber" type="number" class="form-control fs-6 " id="floatingNumber" placeholder="Contact">
+                                        <label for="floatingNumber">Contact Number</label>
+                                    </div>
+                                    <div class="form-floating mb-2">
+                                        <input name="CustomersEmail" type="email" class="form-control fs-6 " id="floatingEmail" placeholder="Email">
+                                        <label for="floatingEmail">Email </label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input name="CustomersAdd" type="text" class="form-control fs-6" id="floatingAdd" placeholder="Address">
+                                        <label for="floatingAdd">Address</label>
+                                    </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" value="submit">Save</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="table-responsive text-center d-flex flex-row justify-content-center align-items-center align-content-center align-self-center mt-auto rounded-2 shadow-sm" style="background: #fff;">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-light" style="background: #4072C9;">
+                                <th>Customer Name</th>
+                                <th>Contact Number</th>
+                                <th>Email</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for i in customers_crud %}
+                            <tr>
+
+                                <td>{{i.CustomersName}}</td>
+                                <td>{{i.ContactNumber}}</td>
+                                <td>{{i.CustomersEmail}}</td>
+                                <td>{{i.CustomersAdd}}&nbsp;</td>
+                                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                 Update
+                                  </button></td>
+                            </tr>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel1">Edit Customers Info</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <a href="{% url 'customer_edit' i.id %}" class="btn btn-outline-primary">Edit</a>
+                                            <a href="{%url 'customer_del' i.id %}" class="btn btn-outline-danger">Delete</a> {% block edit %}{% endblock edit %}
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top" style="background: rgb(78,115,223);"><i class="fas fa-angle-up"></i></a>
+</div>
+{%endblock%}

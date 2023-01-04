@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 def base(request):
-    return render(request, 'base.html')
+    return render(request, 'guesttemp/base.html')
 """ 
 def register(request):
     if request.method  == 'POST':

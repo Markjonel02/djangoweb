@@ -43,11 +43,6 @@ def update(request, pk):
     return render(request, 'edit.html', context)
     
     
-        
-        
-   
-    
-
 def deletecustomer(request, pk):
     customers = get_object_or_404(Customers, pk=pk)
     if request.method == 'POST':
