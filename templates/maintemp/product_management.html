@@ -18,11 +18,14 @@
                                     type="button" style="border-color: var(--bs-btn-border-color);margin-left: 3px;">Search </button></div>
                         </form>
                     </div>
-                    <div class="col-xl-3 d-flex justify-content-center">
+                    <div class="col-l-2 d-flex justify-content-center">
                         <div class="d-flex flex-row flex-shrink-1">
                             <a class="btn btn-primary d-inline-flex flex-row justify-content-center align-items-center flex-wrap mb-auto shadow-sm" role="button" data-bss-hover-animate="pulse" href="#myModal" data-bs-toggle="modal" style="margin-top: 40px;"><i class="fas fa-plus-circle edit-icon"></i>&nbsp;New</a>
                             <a class="btn btn-primary d-inline-flex flex-row justify-content-center align-items-center flex-wrap mb-auto" role="button" href="#myModal-1" data-bs-toggle="modal" style="text-align: center;margin-top: 40px;margin-left: 10px;"><i class="fas fa-plus-circle edit-icon"></i>&nbsp;Add stock</a>
+                            <a class="btn btn-danger d-inline-flex flex-row justify-content-center align-items-center flex-wrap mb-auto" href="{% url 'prod_arch'%}" style="text-align: center;margin-top: 40px;margin-left: 10px;"><i class="fas fa-archive "></i> <span class="ms-1">Archive Item</span> </a>
+
                             <div>
+                                <!-- ========== Start addstock modal ========== -->
                                 <div class="modal fade" role="dialog" tabindex="-1" id="myModal-1">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -42,7 +45,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!-- ========== End addstock modal ========== -->
+
                             </div>
+                            <!-- ========== Start new item ========== -->
                             <div class="modal fade" role="dialog" tabindex="-1" id="myModal">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -51,41 +57,70 @@
                                         </div>
                                         <div class="modal-body w-100">
 
-                                            <form action="">
+                                            <form action="" method="POST">
+
+                                                {% csrf_token %}
+
                                                 <div class="form-floating mb-2 ">
-                                                    <input name="CustomersName" type="text" class="form-control fs-6 " id="floatingInput" placeholder="Item Name ">
+                                                    <input name="ItemName" type="text" class="form-control fs-6 " id="floatingInput" placeholder="Item Name ">
                                                     <label for="floatingInput">Item Name </label>
                                                 </div>
+
                                                 <div class="form-floating mb-2">
-                                                    <input name="" type="text" class="form-control fs-6 " id="size" placeholder="Size">
+                                                    <input name="Size" type="text" class="form-control fs-6 " id="size" placeholder="Size">
                                                     <label for="size">Size</label>
                                                 </div>
-                                                <div class="form-floating mb-2">
-                                                    <input name="" type="" class="form-control fs-6 " id="floatingEmail" placeholder="Email">
-                                                    <label for="floatingEmail">Email </label>
-                                                </div>
-                                                <div class="form-floating">
-                                                    <input name="CustomersAdd" type="text" class="form-control fs-6" id="floatingAdd" placeholder="Address">
-                                                    <label for="floatingAdd">Address</label>
-                                                </div>
+                                                <!-- 
+                                                <select name="combo" id="combo" class="mb-2 p-2 " style="display:none;">
 
-                                                <select name="combo" id="combo" class="mt-2 p-2">
                                                     <option value="">Category</option> 
                                                     <option value="combo1">Porcelain Tile</option>
                                                     <option value="combo2">Ceramic Tile</option>
                                                     <option value="combo3">Skimcoat</option>
                                                     <option value="comboBlank">Sanitary ware</option>
                                                     <option value="comboBlank">Adhesive</option>
-                                                    <input type="text" name="" id="inputfield" class="ms-2 p-2" style="width:310px;" readonly>
-                                                  </select>
+                                                  </select> -->
+                                                <div class="form-floating mb-2 ">
+                                                    <input name="Category" type="text" class="form-control fs-6 " id="category" placeholder="Category">
+                                                    <label for="category">Category </label>
+                                                </div>
+                                                <div class="form-floating mb-2 ">
+                                                    <input name="Price" type="number" class="form-control fs-6 " id="floatingEmail" placeholder="Price">
+                                                    <label for="price">Price </label>
+                                                </div>
 
-
+                                                <div class="form-floating">
+                                                    <input name="Stock" type="number" class="form-control fs-6 visually-hidden" id="stock" placeholder="Stock">
+                                                    <label for="stock" class="visually-hidden">Stock</label>
+                                                </div>
+                                                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                                             </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ========== End new item ========== -->
+
+
+                            <!-- ========== Start Archive ========== -->
+                            <div class="modal fade" role="dialog" tabindex="-1" id="archiveModal">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4>Archived Items</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {% include 'maintemp/productM/archive.html' %}
                                         </div>
                                         <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- ========== End Archive ========== -->
+
+
                         </div>
                     </div>
                     <div class="w-100"></div>
@@ -106,21 +141,33 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                            {% for i in list_product %}
+
                             <tr>
-                                <td class="text-dark">Mariwasa B &amp; W Marble</td>
-                                <td class="text-dark">20 X 20</td>
-                                <td class="text-dark">Porcelain Tile</td>
-                                <td class="text-dark">215.00</td>
-                                <td class="text-dark">500</td>
-                                <td><button class="btn btn-primary btn-sm text-bg-dark me-auto" data-bss-hover-animate="pulse" type="button" style="background: #4DC274;margin-bottom: 5px;">Edit</button><button class="btn btn-primary btn-sm text-bg-danger ms-2"
-                                        data-bss-hover-animate="pulse" type="button" style="margin-bottom: 5px;">Archive</button></td>
+                                <td class="text-dark">{{i.ItemName}}</td>
+                                <td class="text-dark">{{i.Size}}</td>
+                                <td class="text-dark">{{i.Category}}</td>
+                                <td class="text-dark">{{i.Price}}</td>
+                                <td class="text-dark">{{i.Stock}}</td>
+                                <td>
+                                    <a href="{% url 'product_edit' i.pk %}" class="btn btn-outline-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-edit    "></i> Edit</a>
+                                    <a href="{% url 'product_del' i.pk %}" class="btn btn-outline-danger" data-bss-hover-animate="pulse" type="button"><i class="fas fa-archive"></i>  Delete</a>
+                                </td>
                             </tr>
+
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
+
         </div>
     </div><a class="border rounded d-inline scroll-to-top" href="#page-top" style="background: rgb(78,115,223);"><i class="fas fa-angle-up"></i></a>
+
+
+
+
 </div>
 
 {% endblock content %}

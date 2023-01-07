@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Customers_crud
-from .forms import Customers_crudForm
+from .models import Customers_crud, Product_crud,product_archive
+from .forms import Customers_crudForm, Product_crudForm
 from django.views.generic import DeleteView
+from django.urls import reverse_lazy
+
 
 def dashboard(request):
     return render(request, 'maintemp/dashboard.html')
@@ -50,9 +52,57 @@ def del_customers(request,pk):
 #cutomers profile <--- End --->
 
 #product management<--- start --->
-def product_management(request):
+def product_list(request):
+    list_product = Product_crud.objects.all()
     
-    return render(request,'maintemp/productM/product_management.html')
+    if request.method == 'POST':
+        form = Product_crudForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')
+        
+    form = Product_crudForm()
+    
+    context = {
+        'list_product':list_product,
+    }
+    return render(request,'maintemp/product_management.html',context)
+
+# === Edit === 
+
+def product_edit(request,pk):
+    list_product = Product_crud.objects.get(id=pk)
+    form = Product_crudForm(instance=list_product)
+
+    if request.method == 'POST':
+        form = Product_crudForm(request.POST, instance=list_product)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')
+
+    context = {
+        'form': form,
+        'list_product':list_product,
+    }
+    return render(request, 'maintemp/productM/product_edit.html', context)
+   
+#  === Archive ===
+def product_del(request, pk):
+     product_archive = get_object_or_404(Product_crud,id=pk)
+ 
+     if request.method == 'POST':
+           product_archive.delete()
+           return redirect('product_list')
+     
+     
+     context = {
+        'product_archive':product_archive,
+    }
+     return render(request,'maintemp/productM/prod_del.html',context)
+    
+def archive(request):
+    display =product_archive.objects.all()
+    return render(request, 'maintemp/productM/archive.html',{'display':display})
 #product management<--- end --->
 
  

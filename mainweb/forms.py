@@ -1,4 +1,4 @@
-from .models import Customers_crud
+from .models import Customers_crud, Product_crud
 from django import forms
 from django.forms import ModelForm
 
@@ -11,3 +11,10 @@ class Customers_crudForm(ModelForm):
         
         
         
+        
+  
+class Product_crudForm(ModelForm):
+   
+    class Meta:
+        model = Product_crud
+        fields = '__all__'

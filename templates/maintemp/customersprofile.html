@@ -10,13 +10,13 @@
                 </div>
             </div>
             <div class="container d-flex justify-content-end">
-                <button type="button" class="btn btn-primary m-3  justify-content-end" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Add Customer</button>
+                <button type="button" class="btn btn-primary m-3  justify-content-end" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><i class="fas fa-user-plus    "></i> Add Customer</button>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Customers Info</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"> Customers Info</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -25,25 +25,25 @@
                                     {% csrf_token %}
                                     <div class="form-floating mb-2 ">
                                         <input name="CustomersName" type="text" class="form-control fs-6 " id="floatingInput" placeholder="name@example.com">
-                                        <label for="floatingInput">Customers Name </label>
+                                        <label for="floatingInput"><i class="fas fa-user ms-2"></i> Customers Name </label>
                                     </div>
                                     <div class="form-floating mb-2">
                                         <input name="ContactNumber" type="number" class="form-control fs-6 " id="floatingNumber" placeholder="Contact">
-                                        <label for="floatingNumber">Contact Number</label>
+                                        <label for="floatingNumber"><i class="fas fa-phone ms-2"></i> Contact Number</label>
                                     </div>
                                     <div class="form-floating mb-2">
                                         <input name="CustomersEmail" type="email" class="form-control fs-6 " id="floatingEmail" placeholder="Email">
-                                        <label for="floatingEmail">Email </label>
+                                        <label for="floatingEmail"><i class="fas fa-envelope ms-2    "></i> Email </label>
                                     </div>
                                     <div class="form-floating">
                                         <input name="CustomersAdd" type="text" class="form-control fs-6" id="floatingAdd" placeholder="Address">
-                                        <label for="floatingAdd">Address</label>
+                                        <label for="floatingAdd"><i class="fas fa-map ms-2    "></i> Address</label>
                                     </div>
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" value="submit">Save</button>
+                                <button type="submit" class="btn btn-primary" value="submit"><i class="fas fa-save    "></i> Save</button>
                             </div>
                             </form>
                         </div>
@@ -71,29 +71,14 @@
                                 <td>{{i.ContactNumber}}</td>
                                 <td>{{i.CustomersEmail}}</td>
                                 <td>{{i.CustomersAdd}}&nbsp;</td>
-                                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-                                 Update
-                                  </button></td>
+                                <td> <a href="{%url 'customer_edit' i.id %}" class="btn btn-outline-primary"><i class="fas fa-edit    "></i> Edit</a>
+                                    <a href="{%url 'customer_del' i.id %}" class="btn btn-outline-danger"><i class="fas fa-trash    "></i> Delete</a></td>
                             </tr>
-
+                            {% endfor %}
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel1">Edit Customers Info</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <a href="{% url 'customer_edit' i.id %}" class="btn btn-outline-primary">Edit</a>
-                                            <a href="{%url 'customer_del' i.id %}" class="btn btn-outline-danger">Delete</a> {% block edit %}{% endblock edit %}
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
