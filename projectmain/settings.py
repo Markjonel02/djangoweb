@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'active_link',#after installing this active link apps using "pip install django-active-link" install "active_link" to your apps 
     
     #add the following
     'django.contrib.sites',
