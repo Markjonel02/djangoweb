@@ -51,6 +51,11 @@
     #myBtn:hover {
         background-color: #555;
     }
+    
+    ul li {
+        text-decoration: none;
+        list-style-type: none;
+    }
 </style>
 
 <body style="/*background: url(&quot;design.jpg&quot;);*/background-position: 0 -60px;">
@@ -143,163 +148,51 @@
     <section>
         <div class="toast-container"></div>
         <section class="py-5">
-            <div class="container" data-aos="fade-right" data-aos-duration="300" data-aos-delay="400">
+            <div class="container " data-aos="fade-right" data-aos-duration="300" data-aos-delay="400">
                 <h1 class="text-center text-dark">Products Category</h1>
                 <div class="filtr-controls"><span class="text-capitalize active" data-filter="all" style="transform: scale(1);">all </span><span class="text-capitalize" data-filter="1">Adhesive</span><span class="text-capitalize" data-filter="2">Porcelain</span><span class="text-capitalize"
                         data-filter="3">Ceramic</span><span class="text-capitalize" data-filter="3">Skimcoat</span><span data-filter="3" class="text-capitalize">Sanitary ware</span></div>
             </div>
         </section>
         <!--- Tile Gallery-->
-        <div class="container mt-lg-2 " data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
-            <div class="photo-gallery  rounded-2 " style="background-color: #F9F9F9;  margin-top:-50px;">
-                <div class="container-fluid pt-lg-5">
-                    <div class="px-lg-5 ">
+        <div class="container mt-1 p-lg-5 rounded-1" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" style="background-color: #FDF8FE;">
 
-                        <div class="row">
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4  " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
 
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
 
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm  "><img src="https://images.pexels.com/photos/220152/pexels-photo-220152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata brown 247 x 296</a></h5>
+            <div class="row pb-5 mb-2  ">
+                {% for photo in posts %}
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-5 ">
+                    <!-- Card-->
 
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm ">
-                                    <img src="https://images.pexels.com/photos/11285344/pexels-photo-11285344.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top " height="200px ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">alice white 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End -->
-
-                            <!-- Gallery item -->
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 " data-bss-hover-animate="pulse">
-                                <div class="bg-white rounded shadow-sm "><img src="https://images.pexels.com/photos/11285486/pexels-photo-11285486.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1 " alt=" " class="img-fluid card-img-top ">
-                                    <div class="p-4 ">
-                                        <h5> <a href="# " class="text-dark ">agata grey 247 x 296</a></h5>
-                                        <p class="small text-muted mb-0 "></p>
-
-                                    </div>
-                                </div>
-                            </div>
-
+                    <div class="card  shadow-sm border-0 " data-bss-hover-animate="pulse">
+                        <div class="card-body p-3"><img src="{{photo.Image.url}}" alt="" class="img-fluid d-block mx-auto mb-3" height="300px">
+                            <ul>
+                                <li>
+                                    <p class="text-dark fs-6  "><span class="text-info">Itemname: </span>{{photo.Itemname}} </p>
+                                </li>
+                                <li>
+                                    <p class="text-dark fs-6 "><span class="text-info fs-6"> Size: </span>{{photo.Size}}</p>
+                                </li>
+                                <li>
+                                    <p class="text-dark fs-6 "><span class="text-info fs-6"> Category: </span>{{photo.Category}} <span>{{photo.Upload_at}}</span></p>
+                                </li>
+                            </ul>
+                            <ul class="list-inline small d-flex justify-content-center">
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                                <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+                            </ul>
                         </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
 
     </section>
     <!-- ========== End Section ========== -->
@@ -447,6 +340,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
     <section class="py-5" id="contact">

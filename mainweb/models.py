@@ -4,8 +4,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db.models.signals import pre_delete, post_delete #add these two used to give signal 
 from django.db.models import Q # use to search name , object contains a ltter you want to search
-# Create your models here.
 
+# Create your models here.
   #---- CUSTOMERS PROFILE MODEL ----
 class  Customers_crud(models.Model):
  # auto_increment_id = models.AutoField(primary_key=True)
@@ -60,3 +60,33 @@ post_delete.connect(del_archive, sender=product_archive)
 
 
 #  --- End of Product Management ---
+
+
+
+# --- usermanagement start --- 
+class UserAdmin(models.Model):
+  Name = models.CharField(max_length=50)
+  Username = models.OneToOneField(User, on_delete=models.CASCADE)
+  Password = models.CharField(max_length=50)
+  UserType = models.CharField(max_length=50)
+  is_active = models.BooleanField(default=True)
+  
+# --- usermanagement end --- 
+
+
+
+# -- Photo Uploading Model ---
+    
+
+class PhotoUP(models.Model):
+  Itemname = models.CharField(max_length=50)
+  Size     = models.CharField(max_length=50)
+  Description = models.TextField(max_length=100,blank=True, null=True)
+  Category = models.CharField(max_length=50, blank=True,)
+  Image    = models.ImageField(upload_to='uploadedimg',null=True, blank=True)
+  Updload_at = models.DateTimeField(auto_now_add=True)
+  #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
+  
+  def __str__(self):
+    return self.Itemname
+# --- End of Photo Uploading Model ---

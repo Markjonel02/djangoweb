@@ -58,13 +58,17 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == url %}active{% endif %}" href=""><i class="far fa-chart-bar"></i><span>Point of Sale&nbsp;</span></a>
                     </li>
-                    {% url '' as url %}
+                    {% url 'product_list' as url %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == url %}active{% endif %}" href="{%url 'product_list'%}"><i class="fas fa-store-alt"></i><span>Product Management</span></a>
                     </li>
-                    {% url '' as url %}
+                    {% url 'userman' as url %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == url %}active{% endif %}" href=""><i class="fas fa-user"></i><span>User Management</span></a>
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{% url 'userman' %}"><i class="fas fa-user"></i><span>User Management</span></a>
+                    </li>
+                    {% url 'upload' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{% url 'upload' %}"><i class="fas fa-upload "></i><span>Upload&nbsp;</span></a>
                     </li>
                     {% url '' as url %}
                     <li class="nav-item">

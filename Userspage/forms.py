@@ -1,15 +1,7 @@
-#from .models import Entry, User, Profile
 from django import forms
-#from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-
-""" class AddEntry(forms.ModelForm):
-    class Meta:
-        model = Entry
-        fields = ['title', 'content']
-         """
 
 class NewUserForm(UserCreationForm):
 	email = forms.EmailField(required=True)
@@ -25,11 +17,3 @@ class NewUserForm(UserCreationForm):
 			user.save()
 		return user
 
-""" class ProfileForm(forms.ModelForm):
-	 
-	class Meta:
-		model = Profile
-		fields = ('image', 'about_me')
-
-
- """

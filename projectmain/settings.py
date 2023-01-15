@@ -44,14 +44,14 @@ INSTALLED_APPS = [
     'active_link',#after installing this active link apps using "pip install django-active-link" install "active_link" to your apps 
     
     #add the following
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google', #for google auth
+    #'django.contrib.sites',
+    #'allauth',
+    #'allauth.account',
+    #'allauth.socialaccount',
+    #'allauth.socialaccount.providers.google', #for google auth
 ]
 
-AUTHENTICATION_BACKENDS = (
+""" AUTHENTICATION_BACKENDS = (
  #used for default signin such as loggin into admin panel
  'django.contrib.auth.backends.ModelBackend', 
   
@@ -72,6 +72,7 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+ """
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -133,6 +134,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -155,7 +158,16 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#this is will redict to dashboard after user loggedin
+LOGIN_REDIRECT_URL = 'dash'
+
+LOGIN_URL= 'login'
+
