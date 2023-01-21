@@ -86,20 +86,20 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == url %}active{% endif %}" href="reports.html"><i class="fas fa-chart-area"></i><span>Reports</span></a>
                     </li>
-                    {% url '' as url %}
+                    <!--  {% url '' as url %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == url %}active{% endif %}" href="settng.html"><i class="far fa-sun"></i><span>Settings</span></a>
-                    </li>
-                    {% url '' as url %}
+                    </li> -->
+                    <!-- {% url '' as url %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == url %}active{% endif %}" href="About.html"><i class="far fa-building"></i>&nbsp;About System</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button" style="background: var(--bs-navbar-toggler-border-color);"></button></div>
             </div>
         </nav>
-        <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
+        <div class="d-flex flex-column " id="content-wrapper">
+            <div id="content" class="">
                 <nav class="navbar navbar-light navbar-expand bg-light shadow-sm topbar static-top shadow-sm bg-white" style="box-shadow: 0px 0px;background: #fff;">
                     <div class="container-fluid "><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
 
@@ -168,7 +168,7 @@
                 </nav>
 
 
-                <div class="content"> {% block content%}{% endblock %}</div>
+                <div class="content overflow-auto"> {% block content%}{% endblock %}</div>
             </div><a class="border rounded d-inline scroll-to-top" href="#page-top" style="background: rgb(78,115,223);"><i class="fas fa-angle-up"></i></a>
         </div>
         <script>

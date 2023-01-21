@@ -150,48 +150,21 @@
         <section class="py-5">
             <div class="container " data-aos="fade-right" data-aos-duration="300" data-aos-delay="400">
                 <h1 class="text-center text-dark">Products Category</h1>
-                <div class="filtr-controls"><span class="text-capitalize active" data-filter="all" style="transform: scale(1);">all </span><span class="text-capitalize" data-filter="1">Adhesive</span><span class="text-capitalize" data-filter="2">Porcelain</span><span class="text-capitalize"
-                        data-filter="3">Ceramic</span><span class="text-capitalize" data-filter="3">Skimcoat</span><span data-filter="3" class="text-capitalize">Sanitary ware</span></div>
+                <div class="filtr-controls">
+
+                    <span class="text-capitalize" data-filter="all" style="transform: scale(1);"><a href="">All</a> </span> {% url 'guest_up' as url %}
+                    <span class="text-capitalize {% if request.path == url %} active {% endif %}" data-filter="1"><a href="{% url 'guest_up'%}">Adhesive</a></span> {% url 'por_up' as url%}
+                    <span class="text-capitalize {% if request.path == url %} active {% endif %}" data-filter="2"><a href="{% url 'por_up'%}">Porcelain</a></span>{% url 'cer_up' as url %}
+                    <span class="text-capitalize {% if request.path == url %} active {% endif %}" data-filter="3"><a href="{% url 'cer_up'%}">Ceramic</a>
+                    </span><span class="text-capitalize" data-filter="3"><a href="">Skimcoat</a></span>
+                    <span data-filter="3" class="text-capitalize"><a href="">Sanitary Ware</a></span>
+                </div>
             </div>
         </section>
         <!--- Tile Gallery-->
         <div class="container mt-1 p-lg-5 rounded-1" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" style="background-color: #FDF8FE;">
 
-
-
-            <div class="row pb-5 mb-2  ">
-                {% for photo in posts %}
-                <div class="col-lg-3 col-md-6 mb-4 mb-lg-5 ">
-                    <!-- Card-->
-
-                    <div class="card  shadow-sm border-0 " data-bss-hover-animate="pulse">
-                        <div class="card-body p-3"><img src="{{photo.Image.url}}" alt="" class="img-fluid d-block mx-auto mb-3" height="300px">
-                            <ul>
-                                <li>
-                                    <p class="text-dark fs-6  "><span class="text-info">Itemname: </span>{{photo.Itemname}} </p>
-                                </li>
-                                <li>
-                                    <p class="text-dark fs-6 "><span class="text-info fs-6"> Size: </span>{{photo.Size}}</p>
-                                </li>
-                                <li>
-                                    <p class="text-dark fs-6 "><span class="text-info fs-6"> Category: </span>{{photo.Category}} <span>{{photo.Upload_at}}</span></p>
-                                </li>
-                            </ul>
-                            <ul class="list-inline small d-flex justify-content-center">
-                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-                {% endfor %}
-
-            </div>
-
+            {% block productcat %}{% endblock %}
         </div>
 
     </section>
@@ -232,8 +205,8 @@
                                         <path fill-rule="evenodd" d="M0 10.5A1.5 1.5 0 0 1 1.5 9h1A1.5 1.5 0 0 1 4 10.5v1A1.5 1.5 0 0 1 2.5 13h-1A1.5 1.5 0 0 1 0 11.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm10.5.5A1.5 1.5 0 0 1 13.5 9h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM6 4.5A1.5 1.5 0 0 1 7.5 3h1A1.5 1.5 0 0 1 10 4.5v1A1.5 1.5 0 0 1 8.5 7h-1A1.5 1.5 0 0 1 6 5.5v-1zM7.5 4a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"></path>
                                         <path d="M6 4.5H1.866a1 1 0 1 0 0 1h2.668A6.517 6.517 0 0 0 1.814 9H2.5c.123 0 .244.015.358.043a5.517 5.517 0 0 1 3.185-3.185A1.503 1.503 0 0 1 6 5.5v-1zm3.957 1.358A1.5 1.5 0 0 0 10 5.5v-1h4.134a1 1 0 1 1 0 1h-2.668a6.517 6.517 0 0 1 2.72 3.5H13.5c-.123 0-.243.015-.358.043a5.517 5.517 0 0 0-3.185-3.185z"></path>
                                     </svg></div>
-                                <h5 class="fw-bold card-title">Lorem ipsum dolor sit&nbsp;</h5>
                                 <p class="text-muted card-text mb-4">Erat netus est hendrerit, nullam et quis ad cras porttitor iaculis. Bibendum vulputate cras aenean.</p><button class="btn btn-primary shadow" type="button">Learn more</button>
+                                <h5 class="fw-bold card-title">Lorem ipsum dolor sit&nbsp;</h5>
                             </div>
                         </div>
                     </div>

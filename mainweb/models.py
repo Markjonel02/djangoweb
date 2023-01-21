@@ -75,18 +75,95 @@ class UserAdmin(models.Model):
 
 
 
-# -- Photo Uploading Model ---
-    
+# ====== adhesive Uploading Model ========
 
 class PhotoUP(models.Model):
+  sizes = (
+    ('12 x 30','12 x 30'),
+    ('247 x 97','247 x 97'),
+    ('20 x 30','20 x 30')
+)
+  categories = (
+    ('adhesive','Adhesive'),
+    ('porcelain','Porcelain'),
+    ('ceramic','Ceramic'),
+    ('skimcoat','Skimcoat'),
+    ('sanitaryware ','Sanitary ware')
+)
+  
   Itemname = models.CharField(max_length=50)
-  Size     = models.CharField(max_length=50)
-  Description = models.TextField(max_length=100,blank=True, null=True)
-  Category = models.CharField(max_length=50, blank=True,)
+  Size     = models.CharField(max_length=50,choices=sizes,blank=True,null=True)
+  #Description = models.TextField(max_length=100,blank=True, null=True)
+  Category = models.CharField(max_length=50,choices=categories,)
   Image    = models.ImageField(upload_to='uploadedimg',null=True, blank=True)
   Updload_at = models.DateTimeField(auto_now_add=True)
   #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
   
   def __str__(self):
     return self.Itemname
+  
+
+  # ======= model for porcelain =========
+class PhotoUPporcelain(models.Model):
+  P_sizes = (
+    ('12 x 30','12 x 30'),
+    ('247 x 97','247 x 97'),
+    ('20 x 30','20 x 30')
+)
+  P_categories = (
+    ('adhesive','Adhesive'),
+    ('porcelain','Porcelain'),
+    ('ceramic','Ceramic'),
+    ('skimcoat','Skimcoat'),
+    ('sanitaryware ','Sanitary ware')
+)
+  
+  Itemname_p = models.CharField(max_length=50)
+  Size_p     = models.CharField(max_length=50,choices=P_sizes,blank=True,null=True)
+  #Description = models.TextField(max_length=100,blank=True, null=True)
+  Category_p = models.CharField(max_length=50,choices=P_categories,)
+  Image_p    = models.ImageField(upload_to='porcelain_img',null=True, blank=True)
+  Updload_at = models.DateTimeField(auto_now_add=True)
+  #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
+  
+  def __str__(self):
+    return self.Itemname_p
+  
+#  ====   Ceramic photouploading Model ======
+  
+class PhotoUPCeramic(models.Model):
+  C_sizes = (
+    ('12 x 30','12 x 30'),
+    ('247 x 97','247 x 97'),
+    ('20 x 30','20 x 30')
+)
+  C_categories = (
+    ('adhesive','Adhesive'),
+    ('porcelain','Porcelain'),
+    ('ceramic','Ceramic'),
+    ('skimcoat','Skimcoat'),
+    ('sanitaryware ','Sanitary ware')
+)
+  
+  Itemname_c = models.CharField(max_length=50)
+  Size_c     = models.CharField(max_length=50,choices=C_sizes,blank=True,null=True)
+  #Description = models.TextField(max_length=100,blank=True, null=True)
+  Category_c = models.CharField(max_length=50,choices=C_categories,)
+  Image_c    = models.ImageField(upload_to='ceramic_img',null=True, blank=True)
+  Updload_at = models.DateTimeField(auto_now_add=True)
+  #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
+  
+  def __str__(self):
+    return self.Itemname_c
+  
+  
+  # ===== End of ceramic model =====
+  
+  
+  
+  
+  
+  
+  
+  
 # --- End of Photo Uploading Model ---

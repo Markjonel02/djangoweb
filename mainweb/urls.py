@@ -24,7 +24,7 @@ urlpatterns = [
         
        
        # Uploading imaage on Guestpage 
-       path('uploadimg/',admin_views.upload_image,name="upload")
+       path('uploadimg/',admin_views.adupload_image,name="upload")
  ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

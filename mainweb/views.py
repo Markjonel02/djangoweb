@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Customers_crud, Product_crud,product_archive,PhotoUP
-from .forms import Customers_crudForm, Product_crudForm,PhotoUPForm
+from .models import * #Customers_crud, Product_crud,product_archive,PhotoUP
+from .forms import  * #Customers_crudForm, Product_crudForm,PhotoUPForm
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -40,6 +40,7 @@ def search(request):
    
    
    #edit function
+@login_required()
 def edit_customers(request,pk):
     customers_crud = Customers_crud.objects.get(id=pk)
     form = Customers_crudForm(instance=customers_crud)
@@ -58,6 +59,7 @@ def edit_customers(request,pk):
    
    
    #delet function
+@login_required()
 def del_customers(request,pk):
     customers_crud = get_object_or_404(Customers_crud,id=pk)
     if request.method == 'POST':
@@ -88,7 +90,7 @@ def product_list(request):
     return render(request,'maintemp/product_management.html',context)
 
 # === Edit === 
-
+@login_required()
 def product_edit(request,pk):
     list_product = Product_crud.objects.get(id=pk)
     form = Product_crudForm(instance=list_product)
@@ -106,6 +108,7 @@ def product_edit(request,pk):
     return render(request, 'maintemp/productM/product_edit.html', context)
    
 #  === Archive ===
+@login_required()
 def product_del(request, pk):
      product_archive = get_object_or_404(Product_crud,id=pk)
  
@@ -117,7 +120,8 @@ def product_del(request, pk):
         'product_archive':product_archive,
     }
      return render(request,'maintemp/productM/prod_del.html',context)
-    
+ 
+@login_required()
 def archive(request):
     display =product_archive.objects.all()
     return render(request, 'maintemp/productM/archive.html',{'display':display})
@@ -125,6 +129,7 @@ def archive(request):
 
 
  # --- Start usermanagement ---
+@login_required()
 def usermanagement(request):
        
     return render(request,'maintemp/usermanagement.html')
@@ -133,15 +138,45 @@ def usermanagement(request):
 
 
 # --- Uploading image on GuestPage---
-def upload_image(request):
+@login_required()
+def adupload_image(request):
+   
+    #  ==== adhesive submit form =====
+    
     if request.method == 'POST':
         form = PhotoUPForm(request.POST, request.FILES)
-        if form.is_valid():
+        if form.is_valid() :
             form.save()
-            return redirect('dash')
-    else:
+            return redirect('upload')  #return to dash after    
+    else:        
         form = PhotoUPForm()
-    return render(request, 'maintemp/uploadingGal.html', {'form': form})
+        
+        # *****  porcelain submit form ******
 
-      
+    if request.method == 'POST':
+        formporcelain = PhotoUPporcelainForm(request.POST, request.FILES)
+        if formporcelain.is_valid() :
+            formporcelain.save()
+            return redirect('upload')  #return to dash after    
+    else:        
+        formporcelain = PhotoUPporcelainForm()
+        
+        # ----- ceramic submit form -----
+    if request.method == 'POST':
+        formceramic = PhotoUPCeramicForm(request.POST, request.FILES)
+        if formceramic.is_valid() :
+            formceramic.save()
+            return redirect('upload')  #return to dash after    
+    else:        
+        formceramic = PhotoUPCeramicForm()    
+        
+        
+        return render(request, 'maintemp/uploadingGal.html',{
+         'form':form,
+         'formporcelain':formporcelain,
+         'formceramic':formceramic,   
+       }) 
+
+
+
 # --- End of gallery --- 
