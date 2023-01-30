@@ -15,6 +15,7 @@
 
                                     <div class="card-header py-3" style="background: #EEEEEE;">
                                         <p class="text-primary m-0 fw-bold">Adding of Product by Category</p>
+
                                     </div>
 
                                     <div class="card-body ">
@@ -129,11 +130,56 @@
                                         <!-- ========== End ceramic  ========== -->
 
 
-
                                         <!-- ========== Start Section ========== -->
+                                        <div class="modal fade" id="skimcoat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Skimcoat</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="POST" enctype="multipart/form-data" class="form1">
+                                                            {% csrf_token %}{{formskim.as_p}}
+
+                                                            <div class="mb-3"><button class="btn btn-primary btn-sm" name="porcelain" type="submit">Upload</button></div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <!-- ========== End Section ========== -->
 
+
+                                        <!-- ========== Start Sanitary Section ========== -->
+                                        <div class="modal fade" id="sanitary" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Skimcoat</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="POST" enctype="multipart/form-data" class="form1">
+                                                            {% csrf_token %}{{formsanitary.as_p}}
+
+                                                            <div class="mb-3"><button class="btn btn-primary btn-sm" name="porcelain" type="submit">Upload</button></div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- ========== End Section ========== -->
                                     </div>
                                 </div>
 

@@ -9,6 +9,9 @@
                     <th class="text-bg-primary" style="background: #4072C9;">Price</th>
                     <th class="text-bg-primary" style="background: #4072C9;">Stock</th>
                     <th class="text-bg-primary" style="background: #4072C9;">Deletd Time</th>
+                    <th class="text-bg-primary" style="background: #4072C9;">Action</th>
+
+
 
                 </tr>
             </thead>
@@ -23,9 +26,9 @@
                     <td class="text-dark">{{i.Price}}</td>
                     <td class="text-dark">{{i.Stock}}</td>
                     <td class="text-dark">{{i.Delete_at}}</td>
-
-
-
+                    <td class="text-dark">
+                        <a href="">Delete</a>
+                    </td>
                 </tr>
 
                 {% endfor %}

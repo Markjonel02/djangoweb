@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import * #Customers_crud, Product_crud,product_archive,PhotoUP
-from .forms import  * #Customers_crudForm, Product_crudForm,PhotoUPForm
+from .models import * 
+from .forms import  * 
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -118,6 +118,7 @@ def product_del(request, pk):
            
      context = {
         'product_archive':product_archive,
+       
     }
      return render(request,'maintemp/productM/prod_del.html',context)
  
@@ -131,9 +132,8 @@ def archive(request):
  # --- Start usermanagement ---
 @login_required()
 def usermanagement(request):
-       
-    return render(request,'maintemp/usermanagement.html')
-
+   
+        return render(request,'maintemp/usermanagement.html')
 # --- End usermanagement ---           
 
 
@@ -145,21 +145,24 @@ def adupload_image(request):
     
     if request.method == 'POST':
         form = PhotoUPForm(request.POST, request.FILES)
-        if form.is_valid() :
+        
+        if form.is_valid():
             form.save()
             return redirect('upload')  #return to dash after    
     else:        
-        form = PhotoUPForm()
-        
+        form = PhotoUPForm()    
         # *****  porcelain submit form ******
 
     if request.method == 'POST':
         formporcelain = PhotoUPporcelainForm(request.POST, request.FILES)
-        if formporcelain.is_valid() :
+        if formporcelain.is_valid():
             formporcelain.save()
             return redirect('upload')  #return to dash after    
     else:        
         formporcelain = PhotoUPporcelainForm()
+        
+
+            
         
         # ----- ceramic submit form -----
     if request.method == 'POST':
@@ -169,12 +172,31 @@ def adupload_image(request):
             return redirect('upload')  #return to dash after    
     else:        
         formceramic = PhotoUPCeramicForm()    
-        
+    
+    # ===== Skimcoat submit Form ==== 
+    if request.method == 'POST':
+        formskim = PhotoUPSkimcoatForm(request.POST, request.FILES)
+        if formskim.is_valid() :
+            formskim.save()
+            return redirect('upload')  #return to dash after    
+    else:        
+        formskim = PhotoUPSkimcoatForm()
+            
+        #  Sanitary submit form             
+    if request.method == 'POST':
+        formsanitary = PhotoUPSanitaryForm(request.POST, request.FILES)
+        if formsanitary.is_valid() :
+            formsanitary.save()
+            return redirect('upload')  #return to dash after    
+    else:        
+        formsanitary = PhotoUPSanitaryForm()    
         
         return render(request, 'maintemp/uploadingGal.html',{
-         'form':form,
          'formporcelain':formporcelain,
-         'formceramic':formceramic,   
+         'formceramic':formceramic,
+         'formskim':formskim,
+         'formsanitary':formsanitary,
+         'form':form
        }) 
 
 

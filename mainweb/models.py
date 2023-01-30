@@ -64,13 +64,7 @@ post_delete.connect(del_archive, sender=product_archive)
 
 
 # --- usermanagement start --- 
-class UserAdmin(models.Model):
-  Name = models.CharField(max_length=50)
-  Username = models.OneToOneField(User, on_delete=models.CASCADE)
-  Password = models.CharField(max_length=50)
-  UserType = models.CharField(max_length=50)
-  is_active = models.BooleanField(default=True)
-  
+
 # --- usermanagement end --- 
 
 
@@ -95,7 +89,7 @@ class PhotoUP(models.Model):
   Size     = models.CharField(max_length=50,choices=sizes,blank=True,null=True)
   #Description = models.TextField(max_length=100,blank=True, null=True)
   Category = models.CharField(max_length=50,choices=categories,)
-  Image    = models.ImageField(upload_to='uploadedimg',null=True, blank=True)
+  Image    = models.ImageField(upload_to='allimg',null=True, blank=True)
   Updload_at = models.DateTimeField(auto_now_add=True)
   #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
   
@@ -122,18 +116,17 @@ class PhotoUPporcelain(models.Model):
   Size_p     = models.CharField(max_length=50,choices=P_sizes,blank=True,null=True)
   #Description = models.TextField(max_length=100,blank=True, null=True)
   Category_p = models.CharField(max_length=50,choices=P_categories,)
-  Image_p    = models.ImageField(upload_to='porcelain_img',null=True, blank=True)
+  Image_p    = models.ImageField(upload_to='allimg',null=True, blank=True)
   Updload_at = models.DateTimeField(auto_now_add=True)
   #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
   
   def __str__(self):
     return self.Itemname_p
   
-#  ====   Ceramic photouploading Model ======
-  
+#  ====   Ceramic photouploading Model ====== 
 class PhotoUPCeramic(models.Model):
   C_sizes = (
-    ('12 x 30','12 x 30'),
+      ('12 x 30','12 x 30'),
     ('247 x 97','247 x 97'),
     ('20 x 30','20 x 30')
 )
@@ -149,7 +142,7 @@ class PhotoUPCeramic(models.Model):
   Size_c     = models.CharField(max_length=50,choices=C_sizes,blank=True,null=True)
   #Description = models.TextField(max_length=100,blank=True, null=True)
   Category_c = models.CharField(max_length=50,choices=C_categories,)
-  Image_c    = models.ImageField(upload_to='ceramic_img',null=True, blank=True)
+  Image_c    = models.ImageField(upload_to='allimg',null=True, blank=True)
   Updload_at = models.DateTimeField(auto_now_add=True)
   #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
   
@@ -158,10 +151,63 @@ class PhotoUPCeramic(models.Model):
   
   
   # ===== End of ceramic model =====
+ 
+ 
+ #  ==== Skimcoat Model ==== 
+class PhotoUPSkimcoat(models.Model):
+  skim_sizes = (
+    ('12 x 30','12 x 30'),
+    ('247 x 97','247 x 97'),
+    ('20 x 30','20 x 30')
+)
+  skim_categories = (
+    ('adhesive','Adhesive'),
+    ('porcelain','Porcelain'),
+    ('ceramic','Ceramic'),
+    ('skimcoat','Skimcoat'),
+    ('sanitaryware ','Sanitary ware')
+)
   
+  Itemname_S = models.CharField(max_length=50)
+  Size_S     = models.CharField(max_length=50,choices=skim_sizes,blank=True,null=True)
+  #Description = models.TextField(max_length=100,blank=True, null=True)
+  Category_S = models.CharField(max_length=50,choices=skim_categories,)
+  Image_S    = models.ImageField(upload_to='allimg',null=True, blank=True)
+  Updload_at = models.DateTimeField(auto_now_add=True)
+  #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
   
+  def __str__(self):
+    return self.Itemname_S
   
+  # ==== End skimcoat Model =====
   
+    
+  # ==== start Sanitaryware Model =====
+class PhotoUPSanitary(models.Model):
+  sanitary_sizes = (
+    ('12 x 30','12 x 30'),
+    ('247 x 97','247 x 97'),
+    ('20 x 30','20 x 30')
+)
+  sanitary_categories = (
+    ('adhesive','Adhesive'),
+    ('porcelain','Porcelain'),
+    ('ceramic','Ceramic'),
+    ('skimcoat','Skimcoat'),
+    ('sanitaryware ','Sanitary ware')
+)
+  
+  Itemname_Sa = models.CharField(max_length=50)
+  Size_Sa     = models.CharField(max_length=50,choices=sanitary_sizes,blank=True,null=True)
+  #Description = models.TextField(max_length=100,blank=True, null=True)
+  Category_Sa = models.CharField(max_length=50,choices=sanitary_categories,)
+  Image_Sa    = models.ImageField(upload_to='allimg',null=True, blank=True)
+  Updload_at = models.DateTimeField(auto_now_add=True)
+  #Updated_at = models.DateTimeField(auto_now_add=True ,default=timezone.now)
+  
+  def __str__(self):
+    return self.Itemname_Sa
+  # ==== End Sanitaryware Model =====
   
   
   

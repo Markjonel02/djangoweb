@@ -1,0 +1,32 @@
+{% extends 'guesttemp/base.html' %} {% block productcat%}
+<div class="row pb-5 mb-2  ">
+    {% for san in sanitary_up %}
+    <div class="col-lg-3 col-md-6 mb-4 mb-lg-5 ">
+        <!-- Card-->
+
+        <div class="card  shadow-sm border-0 " data-bss-hover-animate="pulse">
+            <div class="card-body p-3"><img src="{{san.Image_Sa.url}}" alt="" class=" d-block mx-auto mb-3 " height="100px">
+                <ul>
+                    <li>
+                        <p class="text-dark fs-6  "><span class="text-info">Itemname: </span>{{san.Itemname_Sa}}</p>
+                    </li>
+                    <li>
+                        <p class="text-dark fs-6 "><span class="text-info fs-6"> Size: </span>{{san.Size_Sa}}</p>
+                    </li>
+                    <li>
+                        <p class="text-dark fs-6 "><span class="text-info fs-6"> Category: </span>{{san.Category_Sa}} <span>{{san.Upload_at}}</span></p>
+                    </li>
+                </ul>
+                <ul class="list-inline small d-flex justify-content-center">
+                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                    <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+                    <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>{% endblock %}

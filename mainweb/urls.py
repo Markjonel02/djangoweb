@@ -21,10 +21,11 @@ urlpatterns = [
 
         # user management urls 
         path('usermanagement/',admin_views.usermanagement,name='userman'),
-        
+       # path('updaterole/<int:user_id>/',admin_views.update_userrole,name='uprole'),
+
        
        # Uploading imaage on Guestpage 
-       path('uploadimg/',admin_views.adupload_image,name="upload")
+       path('uploadimg',admin_views.adupload_image,name="upload")
  ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

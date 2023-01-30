@@ -26,6 +26,15 @@ def porcelain_up(request):
 def ceramic_up(request):
      cer_p  = PhotoUPCeramic.objects.all()
      return render(request, 'guesttemp/Ceramictile.html',{'cer_p':cer_p}) 
+ 
+ 
+def skim_up(request):
+    skimc_p = PhotoUPSkimcoat.objects.all()
+    return render(request, 'guesttemp/Skimcoat.html',{'skimc_p':skimc_p})
+
+def sanitary_up(request):
+    sanitary_up = PhotoUPSanitary.objects.all()
+    return render(request, 'guesttemp/Sanitaryware.html',{'sanitary_up':sanitary_up})
    
 """ def edit_photo(request, pk):
     photo = Photo.objects.get(pk=pk)
@@ -36,7 +45,7 @@ def ceramic_up(request):
             return redirect('view_photos')
     else:
         form = PhotoForm(instance=photo)
-    return render(request, 'edit_photo.html', {'form': form})
+    return render(request, 'edit_photo  .html', {'form': form})
 
 def delete_photo(request, pk):
     Photo.objects.get(pk=pk).delete()

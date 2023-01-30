@@ -21,7 +21,8 @@ class Product_crudForm(ModelForm):
 class SearchForm(forms.Form):
     query = forms.CharField(max_length=100)
     
-    
+    #usermanagemnt 
+
 class PhotoUPForm(forms.ModelForm):
    # categories =forms.CharField(label='Categories',widget=forms.Select(choices=pcategories)) 
     class Meta:
@@ -38,7 +39,7 @@ class PhotoUPporcelainForm(forms.ModelForm):
 # ====== End of Porcelain Form ======
 
 
-# ====== Ceramic ModelForm =======
+# ====== Sk ModelForm =======
 class PhotoUPCeramicForm(forms.ModelForm):
     
     class Meta:
@@ -47,3 +48,20 @@ class PhotoUPCeramicForm(forms.ModelForm):
 
 # ====== Ceramic End ModelForm =======
         
+    
+# ====== skimcoat ModelForm =======
+class PhotoUPSkimcoatForm(forms.ModelForm):
+    
+    class Meta:
+        model = PhotoUPSkimcoat
+        fields = ('Itemname_S','Size_S','Category_S','Image_S')
+        
+# ====== skimcoat ModelForm =======
+
+# ====== Sanitaryware ModelForm =======
+class PhotoUPSanitaryForm(forms.ModelForm):
+    class Meta:
+        model= PhotoUPSanitary
+        fields = ('Itemname_Sa','Size_Sa','Category_Sa','Image_Sa')
+# ====== Sanitaryware ModelForm =======
+
