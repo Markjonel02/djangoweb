@@ -1,0 +1,8 @@
+certifi==2022.12.7
+distlib==0.3.6
+django-crispy-forms==1.14.0
+filelock==3.8.2
+pipenv==2022.11.30
+platformdirs==2.6.0
+virtualenv==20.17.1
+virtualenv-clone==0.5.7
