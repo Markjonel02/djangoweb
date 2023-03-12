@@ -16,26 +16,13 @@ def base(request):
 
 def guest_up(request):
     #if request.method == 'GET':     
-     posts = PhotoUP.objects.all()
+     posts = PhotoUP.objects.filter(Category='adhesive')
      return render(request, 'guesttemp/Adhesive.html',{'posts':posts})
 
 def porcelain_up(request):
-     pos_p = PhotoUPporcelain.objects.all()
+     pos_p = PhotoUP.objects.filter(Category='porcelain')
      return render(request, 'guesttemp/Porcelaintile.html',{'pos_p':pos_p}) 
 
-def ceramic_up(request):
-     cer_p  = PhotoUPCeramic.objects.all()
-     return render(request, 'guesttemp/Ceramictile.html',{'cer_p':cer_p}) 
- 
- 
-def skim_up(request):
-    skimc_p = PhotoUPSkimcoat.objects.all()
-    return render(request, 'guesttemp/Skimcoat.html',{'skimc_p':skimc_p})
-
-def sanitary_up(request):
-    sanitary_up = PhotoUPSanitary.objects.all()
-    return render(request, 'guesttemp/Sanitaryware.html',{'sanitary_up':sanitary_up})
-   
 """ def edit_photo(request, pk):
     photo = Photo.objects.get(pk=pk)
     if request.method == 'POST':

@@ -40,8 +40,9 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body ">
-                        <form method="post">
-                            {% csrf_token %}
+                        <form method="POST">
+
+                            {% csrf_token %}{{form.as_p}}
                             <button type="submit" class="btn btn-outline-primary">Submit</button>
                         </form>
 
@@ -61,7 +62,7 @@
             <div class="modal-dialog modal-dialog-centered ">
                 <div class="modal-content ">
                     <div class="modal-header ">
-                        <h1 class="modal-title fs-5 " id="exampleModalToggleLabel2 ">Add Staff</h1>
+                        <h1 class="modal-title fs-5 " id="exampleModalToggleLabel2">Add Staff</h1>
                         <button type="button " class="btn-close " data-bs-dismiss="modal " aria-label="Close "></button>
                     </div>
                     <div class="modal-body ">

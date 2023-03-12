@@ -31,11 +31,9 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body d-flex justify-content-around">
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#adhesive">Adhesive</button>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#porcelain"> Porcelain Tiles</button>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ceramic">Ceramic Tiles </button>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#skimcoat"> Skimcoat</button>
-                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sanitary">SanitayWare</button>
+                                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddProd">Adhesive</button>
+
+
 
                                                     </div>
                                                     <div class="modal-footer">
@@ -52,7 +50,7 @@
 
 
                                         <!-- ========== Start adding adhesive ========== -->
-                                        <div class="modal fade" id="adhesive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal fade" id="AddProd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-scrollable">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -77,109 +75,8 @@
 
 
 
-                                        <!-- ========== Start modal porcelain ========== -->
-                                        <div class="modal fade" id="porcelain" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Porcelain</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="POST" enctype="multipart/form-data" class="form1">
-                                                            {% csrf_token %} {{formporcelain.as_p}}
-
-                                                            <div class="mb-3"><button class="btn btn-primary btn-sm" name="porcelain" type="submit">Upload</button></div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- ========== End modal porcelain ========== -->
 
 
-
-                                        <!-- ========== Start ceramic  ========== -->
-                                        <div class="modal fade" id="ceramic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Ceramic </h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="POST" enctype="multipart/form-data" class="form1">
-                                                            {% csrf_token %}{{formceramic.as_p}}
-
-                                                            <div class="mb-3"><button class="btn btn-primary btn-sm" name="porcelain" type="submit">Upload</button></div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <!-- ========== End ceramic  ========== -->
-
-
-                                        <!-- ========== Start Section ========== -->
-                                        <div class="modal fade" id="skimcoat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Skimcoat</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="POST" enctype="multipart/form-data" class="form1">
-                                                            {% csrf_token %}{{formskim.as_p}}
-
-                                                            <div class="mb-3"><button class="btn btn-primary btn-sm" name="porcelain" type="submit">Upload</button></div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- ========== End Section ========== -->
-
-
-                                        <!-- ========== Start Sanitary Section ========== -->
-                                        <div class="modal fade" id="sanitary" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-scrollable">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Skimcoat</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="POST" enctype="multipart/form-data" class="form1">
-                                                            {% csrf_token %}{{formsanitary.as_p}}
-
-                                                            <div class="mb-3"><button class="btn btn-primary btn-sm" name="porcelain" type="submit">Upload</button></div>
-                                                        </form>
-                                                    </div>
-                                                    <div class="modal-footer">
-
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- ========== End Section ========== -->
                                     </div>
                                 </div>
 

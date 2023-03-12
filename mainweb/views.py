@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import * 
 from .forms import  * 
+from django.http import JsonResponse
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from django.contrib.auth import login, authenticate
 
 @login_required()
 def dashboard(request):
@@ -23,40 +24,27 @@ def custom_list(request):
             success_url = reverse_lazy('customer_list')
     else:
         form = Customers_crudForm()
-    return render(request, 'maintemp/customersprofile.html', {'form': form, 'customers_crud': customers_crud})
+    return render(request, 'maintemp/customersprofile.html', {'form':form, 'customers_crud': customers_crud})
    
-"""  #search 
-def search(request):
-    form = SearchForm(request.GET)   
-    if form.is_valid():
-        query = form.cleaned_data['query']
-        list_product = Product_crud.objects.filter()
-        return render(request, 'maintemp/product_management.html', {'form': form, 'list_product':list_product})
-    else:
-        form = SearchForm()
-        return render(request, 'maintemp/product_management.html', {'form':form}) """
-   
-   #end search form
+
    
    
    #edit function
 @login_required()
 def edit_customers(request,pk):
-    customers_crud = Customers_crud.objects.get(id=pk)
-    form = Customers_crudForm(instance=customers_crud)
-
+    customers_crud = get_object_or_404(Customers_crud, pk=pk)
+    
     if request.method == 'POST':
-        form = Customers_crudForm(request.POST, instance=customers_crud)
-        if form.is_valid():
-            form.save()
-            return redirect('customer_list')
-
-    context = {
-        'form': form,
-        'customers_crud': customers_crud,
-    }
-    return render(request, 'maintemp/crudmain/edit.html', context)
+        #this will get the value 
+     customers_crud.CustomersName = request.POST.get('CustomersName')
+     customers_crud.ContactNumber = request.POST.get('ContactNumber')
+     customers_crud.CustomersEmail = request.POST.get('CustomersEmail')
+     customers_crud.CustomerAdd = request.POST.get('CustomersAdd')
+     customers_crud.save()
+     return JsonResponse({'success':True})
    
+    context = {'customers_crud':customers_crud}
+    return render(request, 'maintemp/customersprofile.html',context)
    
    #delet function
 @login_required()
@@ -154,51 +142,24 @@ def adupload_image(request):
         # *****  porcelain submit form ******
 
     if request.method == 'POST':
-        formporcelain = PhotoUPporcelainForm(request.POST, request.FILES)
+        formporcelain = PhotoUP(request.POST, request.FILES)
         if formporcelain.is_valid():
             formporcelain.save()
             return redirect('upload')  #return to dash after    
     else:        
-        formporcelain = PhotoUPporcelainForm()
+        formporcelain = PhotoUPForm()
         
 
             
         
-        # ----- ceramic submit form -----
-    if request.method == 'POST':
-        formceramic = PhotoUPCeramicForm(request.POST, request.FILES)
-        if formceramic.is_valid() :
-            formceramic.save()
-            return redirect('upload')  #return to dash after    
-    else:        
-        formceramic = PhotoUPCeramicForm()    
-    
-    # ===== Skimcoat submit Form ==== 
-    if request.method == 'POST':
-        formskim = PhotoUPSkimcoatForm(request.POST, request.FILES)
-        if formskim.is_valid() :
-            formskim.save()
-            return redirect('upload')  #return to dash after    
-    else:        
-        formskim = PhotoUPSkimcoatForm()
-            
-        #  Sanitary submit form             
-    if request.method == 'POST':
-        formsanitary = PhotoUPSanitaryForm(request.POST, request.FILES)
-        if formsanitary.is_valid() :
-            formsanitary.save()
-            return redirect('upload')  #return to dash after    
-    else:        
-        formsanitary = PhotoUPSanitaryForm()    
         
         return render(request, 'maintemp/uploadingGal.html',{
          'formporcelain':formporcelain,
-         'formceramic':formceramic,
-         'formskim':formskim,
-         'formsanitary':formsanitary,
          'form':form
        }) 
 
 
 
 # --- End of gallery --- 
+
+#how to pass value from another modal in same page uisng jquery in django python?              

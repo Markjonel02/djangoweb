@@ -10,12 +10,10 @@ urlpatterns = [
         path('edit/<int:pk>/',admin_views.edit_customers,name="customer_edit"),
         path('del/<int:pk>/',admin_views.del_customers,name='customer_del'),
         
-        #search (links)
-        #path('search/',admin_views.search,name='search'),
-              
+        
         # product management urls 
         path('prod/',admin_views.product_list,name='product_list'),
-        path('prod_edit/<int:pk>/',admin_views.product_edit,name='product_edit'),
+        #path('prod_edit/<int:pk>/',admin_views.product_edit,name='product_edit'),
         path('delete/<int:pk>/',admin_views.product_del,name='product_del'),
         path('archive/',admin_views.archive,name='prod_arch'),
 
