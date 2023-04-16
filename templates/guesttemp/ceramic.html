@@ -1,0 +1,24 @@
+{% extends 'guesttemp/base.html' %} {%load static %}{% block productcat%}
+<link rel="stylesheet" href="{% static 'assets/css/card.css' %}">
+<div class="row pb-5 mb-2 ">
+
+    <div class="card-animation-cont">
+        <!-- Duplicate the following div to add cards -->
+        {% for cer in posts %}
+        <div class="card ">
+            <img src="{{cer.Image.url}}" alt="" />
+            <div class="info">
+                <strong>{{cer.Itemname}}</strong>
+                <span class="sub-title">Category: {{cer.Category}}</span>
+                <hr/>
+                <div class="hide-info">
+                    <span class="text">
+             <p>Size: {{cer.Size}}</p>
+              </span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>{% endblock %}

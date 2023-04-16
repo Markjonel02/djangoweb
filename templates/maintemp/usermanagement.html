@@ -4,12 +4,11 @@
         <div id="content">
             <div class="container-fluid pt-3" style="overflow: auto;background: #F4F5FF;opacity: 1;filter: brightness(102%);">
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                    <h3 class="text-dark mb-0 fw-bold" style="--bs-body-font-weight: normal;font-size: 2.1rem;">User Management</h3>
+                    <h3 class="text-dark mb-0 fw-bold">User Management</h3>
                 </div>
             </div>
 
-            <div class="col-11 d-flex justify-content-end"> <button class="btn btn-primary d-flex" data-bs-target="#myModal" data-bs-toggle="modal">Add user</button>
-
+            <div class="col-11 d-flex justify-content-end mt-2"><button class="btn btn-primary" data-bs-target="#myModal" data-bs-toggle="modal">Add user</button>
             </div>
             <div class="row mt-1">
                 <div class="col"></div>
@@ -31,51 +30,9 @@
             </div>
         </div>
 
-        <!-- Second modal-->
-        <div class="modal fade" id="admin" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-            <div class="modal-dialog ">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5 " id="exampleModalToggleLabel2">Add Admin</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body ">
-                        <form method="POST">
 
-                            {% csrf_token %}{{form.as_p}}
-                            <button type="submit" class="btn btn-outline-primary">Submit</button>
-                        </form>
 
-                    </div>
-                    <div class="modal-footer ">
-                        <button class="btn btn-primary " data-bs-target="#myModal " data-bs-toggle="modal ">Back to first</button>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- end of second modal -->
-
-        <!-- start staff modal -->
-        <div class="modal fade " id="staff " aria-hidden="true " aria-labelledby="exampleModalToggleLabel2 " tabindex="-1 ">
-            <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content ">
-                    <div class="modal-header ">
-                        <h1 class="modal-title fs-5 " id="exampleModalToggleLabel2">Add Staff</h1>
-                        <button type="button " class="btn-close " data-bs-dismiss="modal " aria-label="Close "></button>
-                    </div>
-                    <div class="modal-body ">
-                        Hide this modal and show the first with the button below.
-                    </div>
-                    <div class="modal-footer ">
-                        <button class="btn btn-primary " data-bs-target="#myModal " data-bs-toggle="modal ">Back to first</button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end staff modal  -->
         <div class="container ">
             <div class="table-responsive text-center text-dark text-bg-light rounded-2 shadow-sm " style="background: #eeeeee; ">
                 <table class="table ">

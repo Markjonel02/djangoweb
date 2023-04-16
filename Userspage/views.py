@@ -19,7 +19,7 @@ def register_request(request):
 			return redirect('dash')
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
-	return render (request, 'usertemp/register.html', context={'Register form':form})
+	return render (request, 'usertemp/register.html')
 
     #login Form
 def login_request(request):

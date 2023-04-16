@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import * 
 from .forms import  * 
-from django.http import JsonResponse
+from django.contrib import messages
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -19,11 +19,13 @@ def custom_list(request):
     customers_crud = Customers_crud.objects.all()
     if request.method == 'POST':
         form = Customers_crudForm(request.POST)
+
         if form.is_valid():
             form.save()
             success_url = reverse_lazy('customer_list')
     else:
         form = Customers_crudForm()
+    
     return render(request, 'maintemp/customersprofile.html', {'form':form, 'customers_crud': customers_crud})
    
 
@@ -31,20 +33,27 @@ def custom_list(request):
    
    #edit function
 @login_required()
-def edit_customers(request,pk):
-    customers_crud = get_object_or_404(Customers_crud, pk=pk)
+def edit_customers(request):
     
     if request.method == 'POST':
         #this will get the value 
-     customers_crud.CustomersName = request.POST.get('CustomersName')
-     customers_crud.ContactNumber = request.POST.get('ContactNumber')
-     customers_crud.CustomersEmail = request.POST.get('CustomersEmail')
-     customers_crud.CustomerAdd = request.POST.get('CustomersAdd')
-     customers_crud.save()
-     return JsonResponse({'success':True})
-   
-    context = {'customers_crud':customers_crud}
-    return render(request, 'maintemp/customersprofile.html',context)
+    
+     customers_edit = get_object_or_404(Customers_crud, pk=request.POST["editpk"])
+     customers_edit.CustomersName = request.POST['CustomersName']
+     customers_edit.ContactNumber = request.POST['ContactNumber']
+     customers_edit.CustomersEmail = request.POST['CustomersEmail']
+     customers_edit.CustomerAdd = request.POST['CustomersAdd']
+     customers_edit.save()
+     messages.info(request, 'update successfuly!')
+     
+    elif request.method == 'POST':
+     customers_edit.CustomersName = request.POST['']
+     customers_edit.ContactNumber = request.POST['']
+     customers_edit.CustomersEmail = request.POST['']
+     customers_edit.CustomerAdd = request.POST['']
+     messages.error(request, 'All fields are required')
+     return redirect('customer_list')
+ 
    
    #delet function
 @login_required()
@@ -74,6 +83,7 @@ def product_list(request):
     
     context = {
         'list_product':list_product,
+        'display':product_archive.objects.all()
     }
     return render(request,'maintemp/product_management.html',context)
 
@@ -128,9 +138,8 @@ def usermanagement(request):
 # --- Uploading image on GuestPage---
 @login_required()
 def adupload_image(request):
-   
+ 
     #  ==== adhesive submit form =====
-    
     if request.method == 'POST':
         form = PhotoUPForm(request.POST, request.FILES)
         
@@ -163,3 +172,4 @@ def adupload_image(request):
 # --- End of gallery --- 
 
 #how to pass value from another modal in same page uisng jquery in django python?              
+

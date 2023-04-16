@@ -24,7 +24,7 @@
                     <div class="col-l-2 d-flex justify-content-center ">
                         <div class="d-flex flex-row flex-shrink-1 ">
                             <a class="btn btn-primary d-inline-flex flex-row justify-content-center align-items-center flex-wrap mb-auto shadow-sm " role="button" data-bss-hover-animate="pulse" href="#addModal" data-bs-toggle="modal" style="margin-top:40px; "><i class="fas fa-plus-circle edit-icon "></i>&nbsp;New</a>
-                            <a class="btn btn-danger d-inline-flex flex-row justify-content-center align-items-center flex-wrap mb-auto" href="{% url 'prod_arch'%}" style="text-align: center;margin-top: 40px;margin-left: 10px; "><i class="fas fa-archive"></i> <span class="ms-1 ">Archived Item</span> </a>
+                            <a class="btn btn-danger d-inline-flex flex-row justify-content-center align-items-center flex-wrap mb-auto" role="button" href="#archive" data-bs-toggle="modal" style="text-align: center;margin-top: 40px;margin-left: 10px; "><i class="fas fa-archive"></i> <span class="ms-1 ">Archived Item</span> </a>
 
                             <div>
 
@@ -103,11 +103,11 @@
                     <table class="table table-hover table-borderless rounded-2 ">
                         <thead class="rounded-2 ">
                             <tr>
-                                <th class="text-bg-primary " style="background: #4072C9; ">Item Name</th>
-                                <th class="text-bg-primary " style="background: #4072C9; ">Size</th>
-                                <th class="text-bg-primary " style="background: #4072C9; ">Category</th>
-                                <th class="text-bg-primary " style="background: #4072C9; ">Price</th>
-                                <th class="text-bg-primary " style="background: #4072C9; ">Stock</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Item Name</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Size</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Category</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Price</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Stock</th>
                                 <th class="text-center text-bg-primary " style="background: #4045b0; ">Actions</th>
                             </tr>
                         </thead>
@@ -140,5 +140,61 @@
 
 
 </div>
+<div class="modal fade" id="archive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
+
+                <div class="container-fluid" style="margin-top: 20px;">
+                    <div class="table-responsive-sm text-center d-flex flex-shrink-0 justify-content-center align-items-center align-content-center align-self-center shadow-sm rounded-2" style="background: #ffff;position: static;">
+                        <table class="table table-hover table-borderless rounded-2">
+                            <thead class="rounded-2 ">
+                                <tr>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Item Name</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Size</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Category</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Price</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Stock</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Deletd Time</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Action</th>
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for d in display %}
+
+                                <tr>
+                                    <td class="text-dark">{{d.ItemName}}</td>
+                                    <td class="text-dark">{{d.Size}}</td>
+                                    <td class="text-dark">{{d.Category}}</td>
+                                    <td class="text-dark">{{d.Price}}</td>
+                                    <td class="text-dark">{{d.Stock}}</td>
+                                    <td class="text-dark">{{d.Delete_at}}</td>
+                                    <td class="text-dark">
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

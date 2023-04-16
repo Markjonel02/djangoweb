@@ -18,7 +18,18 @@ class  Customers_crud(models.Model):
     return self.CustomersName
   
     #---- PRODUCT MANAGEMENT MODEL ----
+ 
+   
+    
 class Product_crud(models.Model):
+  Product_category  =( 
+                      ('adhesive', 'Adhesive'),
+                      ('porcelain', 'Porcelain'),
+                       ('ceramic', 'Ceramic'),
+                      ('skimcoat', 'Skimcoat'),
+                      ('sanitaryware', 'sanitaryware'),
+                      )
+  
   ItemName = models.CharField(max_length=50)
   Size = models.CharField(max_length=50,null=True,blank=True)
   Category  = models.CharField(max_length=50)

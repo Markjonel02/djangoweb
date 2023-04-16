@@ -23,6 +23,9 @@ def porcelain_up(request):
      pos_p = PhotoUP.objects.filter(Category='porcelain')
      return render(request, 'guesttemp/Porcelaintile.html',{'pos_p':pos_p}) 
 
+def ceramic_up(request):
+    cer_p = PhotoUP.objects.filter(Category='ceramic')
+    return render(request, 'guesttemp/ceramic.html',{'cer_p':cer_p})
 """ def edit_photo(request, pk):
     photo = Photo.objects.get(pk=pk)
     if request.method == 'POST':

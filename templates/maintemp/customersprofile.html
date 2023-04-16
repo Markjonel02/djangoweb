@@ -1,4 +1,5 @@
 {%extends 'maintemp/base_d.html'%}{%block content%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <div id="wrapper">
 
     <div class="d-flex flex-column" id="content-wrapper">
@@ -10,9 +11,9 @@
                 </div>
             </div>
             <div class="container d-flex justify-content-end">
-                <button type="button" class="btn btn-primary m-3  justify-content-end" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap"><i class="fas fa-user-plus    "></i> Add Customer</button>
+                <button type="button" class="btn btn-primary m-3  justify-content-end" data-bs-toggle="modal" data-bs-target="#addmodal" data-bs-whatever="@getbootstrap"><i class="fas fa-user-plus    "></i> Add Customer</button>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -53,79 +54,117 @@
             <div class="container">
                 <div class="table-responsive text-center d-flex flex-row justify-content-center align-items-center align-content-center align-self-center mt-auto rounded-2 shadow-sm" style="background: #fff;">
                     <table class="table">
-                        <thead>
-                            <tr class="text-light" style="background: #4072C9;">
-                                <th>Customer Name</th>
-                                <th>Contact Number</th>
-                                <th>Email</th>
-                                <th>Address</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
 
-                            {% for i in customers_crud %}
-                            <tr>
+                        <tr class="text-light" style="background: #4072C9; ">
+                            <th>Customer Name</th>
+                            <th>Contact Number</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
 
-                                <td>{{i.CustomersName}}</td>
-                                <td>{{i.ContactNumber}}</td>
-                                <td>{{i.CustomersEmail}}</td>
-                                <td>{{i.CustomersAdd}}&nbsp;</td>
-                                <td> <a type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{i.id}}" class="btn btn-outline-primary"><i class="fas fa-edit    "></i> Edit</a>
-                                    <a href="{%url 'customer_del' i.id %}" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Delete</a></td>
-                            </tr>
-                            {% endfor %}
 
-                        </tbody>
-                    </table>
+
+                        {% for i in customers_crud %}
+                        <tr data-cname="{{i.CustomersName}}" data-cnumber="{{i.ContactNumber}}" data-cemail="{{i.CustomersEmail}}" data-add=" {{i.CustomersAdd}} " data-pk="{{i.pk}}">
+                            <td>{{i.CustomersName}}</td>
+                            <td>{{i.ContactNumber}}</td>
+                            <td>{{i.CustomersEmail}}</td>
+                            <td>{{i.CustomersAdd}}&nbsp;</td>
+                            <td><a href="#" class="btn btn-outline-primary" id="editm"><i class="fas fa-edit"></i>Edit</a>
+                                <a href="{%url 'customer_del' i.id %} " class="btn btn-outline-danger"><i class="fas fa-trash"></i> Delete</a></td>
+                        </tr>
+                        {% endfor %}
+
+                        <button type="button" class="btn d-none" id="modalHidden" data-bs-toggle="modal" data-bs-target="#edit">Launch demo modal</button>
                 </div>
+                </table>
             </div>
+        </div>
 
-            <!-- Modal -->
+        <!-- Modal -->
 
 
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal " aria-label="Close "></button>
-                        </div>
-                        <div class="modal-body">
-
-                            <form method="POST">
-                                {% csrf_token %}
-                                <div class=" form-floating mb-2 ">
-                                    <input name="CustomersName " type="text " class="form-control fs-6 " id="floatingInput " value=" ">
-                                    <label for="floatingInput "><i class="fas fa-user ms-2 "></i> Customers Name </label>
-                                </div>
-                                <div class="form-floating mb-2 ">
-                                    <input name="ContactNumber " type="number " class="form-control fs-6 " id="floatingNumber " value=" ">
-                                    <label for="floatingNumber "><i class="fas fa-phone ms-2 "></i> Contact Number</label>
-                                </div>
-                                <div class="form-floating mb-2 ">
-                                    <input name="CustomersEmail " type="email " class="form-control fs-6 " id="floatingEmail " value=" ">
-                                    <label for="floatingEmail "><i class="fas fa-envelope ms-2 "></i> Email </label>
-                                </div>
-                                <div class="form-floating ">
-                                    <input name="CustomersAdd " type="text " class="form-control fs-6 " id="floatingAdd " value=" ">
-                                    <label for="floatingAdd "><i class="fas fa-map ms-2 "></i> Address</label>
-                                </div>
-
-                        </div>
-                        <div class="modal-footer ">
-                            <button type="button " class="btn btn-secondary " data-bs-dismiss="modal ">Close</button>
-                            <button type="submit " class="btn btn-primary " value="submit "><i class="fas fa-save "></i> SaveChanges</button>
-                        </div>
-                        </form>
+        <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                        <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body ">
 
+                        <form action="{% url 'customer_edit' %}" method="POST">
+                            {% csrf_token %}
+
+                            <div class=" form-floating mb-2 ">
+                                <input name="CustomersName" type="text" class="form-control fs-6 " id="Cname">
+                                <label for="Cname"><i class="fas fa-user ms-2 "></i> Customers Name </label>
+                            </div>
+                            <div class="form-floating mb-2 ">
+                                <input name="ContactNumber" type="number " class="form-control fs-6 " id="Cnumber">
+                                <label for="Cnumber "><i class="fas fa-phone ms-2 "></i> Contact Number</label>
+                            </div>
+                            <div class="form-floating mb-2 ">
+                                <input name="CustomersEmail" type="email " class="form-control fs-6 " id="Cemail">
+                                <label for="Cemail "><i class="fas fa-envelope ms-2 "></i> Email </label>
+                            </div>
+                            <div class="form-floating ">
+                                <input name="CustomersAdd" type="text " class="form-control fs-6 " id="Cadd">
+                                <label for="Cadd "><i class="fas fa-map ms-2 "></i> Address</label>
+                            </div>
+                            <input type="hidden" name="editpk" id="Hinput">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal ">Close</button>
+                        <button type="submit" class="btn btn-primary" value="submit" id="message"><i class="fas fa-save "></i> Update</button>
+                    </div>
+                    </form>
                 </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div><a class="border rounded d-inline scroll-to-top " href="#page-top " style="background: rgb(78,115,223); "><i class="fas fa-angle-up "></i></a>
+</div>
+</div>
+
+
+<div class="modal fade" id="messagemodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <button type="button " class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+
             </div>
 
         </div>
+    </div>
+    <!-- ========== jquery ========== -->
+    <script>
+        $(document).ready(function() {
+            $('.table-responsive table tr td ').on('click', '#editm', function() {
+                var cname = $(this).parents('tr').attr('data-cname');
+                var cnumber = $(this).parents('tr').attr('data-cnumber');
+                var cemail = $(this).parents('tr').attr('data-cemail');
+                var cadd = $(this).parents('tr').attr('data-add');
+                var Hiddenpk = $(this).parents('tr').attr('data-pk');
 
-    </div><a class="border rounded d-inline scroll-to-top " href="#page-top " style="background: rgb(78,115,223); "><i class="fas fa-angle-up "></i></a>
-</div>
-</div>
-{%endblock%}
+                $('#Cname').val(cname);
+                $('#Cnumber').val(cnumber);
+                $('#Cemail').val(cemail);
+                $('#Cadd').val(cadd);
+                $('#Hinput').val(Hiddenpk);
+
+                $('#modalHidden').click();
+
+            });
+        });
+    </script>
+    <!-- =========jquery ========== -->
+    {%endblock%}

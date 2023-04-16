@@ -9,6 +9,7 @@ urlpatterns = [
 #      path('All category/',guest_views.all,name='all_up'),
       path('Adhesive/',guest_views.guest_up,name='guest_up'),
       path('Porcelain/',guest_views.porcelain_up,name='por_up'),
+      path('Ceramic/',guest_views.ceramic_up,name='cer_up'),
    
       
 
