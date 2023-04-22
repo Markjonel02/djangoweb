@@ -128,8 +128,16 @@ def archive(request):
  # --- Start usermanagement ---
 @login_required()
 def usermanagement(request):
-   
-        return render(request,'maintemp/usermanagement.html')
+    context = {
+        'customuser':UserManagement.objects.all()
+    }
+    return render(request,'maintemp/usermanagement.html',context)
+
+
+def usermanagement_edit(request):
+
+
+ return render(request, template_name)    
 # --- End usermanagement ---           
 
 
@@ -155,11 +163,6 @@ def adupload_image(request):
             return redirect('upload')  #return to dash after    
     else:        
         formporcelain = PhotoUPForm()
-        
-
-            
-        
-        
         return render(request, 'maintemp/uploadingGal.html',{
          'formporcelain':formporcelain,
          'form':form

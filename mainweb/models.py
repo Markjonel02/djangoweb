@@ -92,12 +92,11 @@ class UserManagement(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=50, unique=True)
     is_staff = models.BooleanField(default=False) 
     is_active = models.BooleanField(default=False)
+    
     objects = CustomUserManagement()
-    
-    
-    
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name','first_name']
+  
+    USERNAME_FIELD = 'user_name'
+    REQUIRED_FIELDS = ['first_name','email']
     
     def __str__(self):
       return self.user_name

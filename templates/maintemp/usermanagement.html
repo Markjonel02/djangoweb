@@ -38,24 +38,30 @@
                 <table class="table ">
                     <thead>
                         <tr>
-                            <th class="text-light " style="background: #4072C9; ">Name</th>
+                            <th class="text-light " style="background: #4072C9; ">Email</th>
                             <th class="text-light " style="background: #4072C9; ">Username</th>
-                            <th class="text-light " style="background: #4072C9; ">Password</th>
+                            <th class="text-light " style="background: #4072C9; ">firstname</th>
                             <th class="text-light " style="background: #4072C9; ">User Type</th>
                             <th class="text-light " style="background: #4072C9; ">Status&nbsp;</th>
                             <th class="text-light " style="background: #4072C9; ">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        
+                        {% for user in customuser  %}
+                      
+                            
                         <tr>
-                            <td>Doe&nbsp;</td>
-                            <td>johndoe123</td>
-                            <td>******</td>
-                            <td>Admin&nbsp;</td>
-                            <td>Active&nbsp;</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.user_name}}</td>
+                            <td>{{user.first_name}}</td>
+                            <td>{{user.is_staff}}</td>
+                            
+                            <td>{{user.is_active}}</td>
                             <td><button class="btn btn-dark " data-bss-hover-animate="pulse " type="button ">Edit</button></td>
                         </tr>
-
+      
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

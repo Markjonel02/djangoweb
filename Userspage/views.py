@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import  NewUserForm 
+#from .forms import  NewUserForm 
 from django.contrib.auth import login, authenticate, logout #add this
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm #add this
@@ -9,7 +9,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 #Register
-def register_request(request):
+""" def register_request(request):
 	if request.method == "POST":
 		form = NewUserForm(request.POST)
 		if form.is_valid():
@@ -19,9 +19,10 @@ def register_request(request):
 			return redirect('dash')
 		messages.error(request, "Unsuccessful registration. Invalid information.")
 	form = NewUserForm()
-	return render (request, 'usertemp/register.html')
+	return render (request, 'usertemp/register.html') """
 
     #login Form
+login_required()
 def login_request(request):
   
 	if request.method == 'POST':

@@ -25,13 +25,14 @@ class SearchForm(forms.Form):
 
 
 class PhotoUPForm(forms.ModelForm):
-   # categories =forms.CharField(label='Categories',widget=forms.Select(choices=pcategories)) 
     class Meta:
         model = PhotoUP
         fields = ('Itemname','Size','Category','Image')
 
-# ====== Porcelain Form ======
 
-
-# ====== End of Porcelain Form ======
-
+# -- usermanagement -- 
+class CustomUserManagementForm(ModelForm):
+    class Meta:
+        model = UserManagement()
+        fields = ('email','user_name','first_name','is_staff','is_active')
+       
