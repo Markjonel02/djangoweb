@@ -42,7 +42,7 @@
         font-size: 18px;
         border: none;
         outline: none;
-        background-color: #2F54CF;
+        background-color: #555;
         color: white;
         cursor: pointer;
         padding: 15px;
@@ -62,7 +62,7 @@
 
 <body style="/*background: url(&quot;design.jpg&quot;);*/background-position: 0 -60px;">
     <nav class="navbar navbar-light navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span>Dunmark Tileshop</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span>Dunmark Tileshop</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item "><a class="nav-link active" data-bss-hover-animate="pulse" href="#home">Home</a></li>
@@ -169,12 +169,12 @@
     </section>
     <!-- ========== End Section ========== -->
     
-    <section class="calcu py-5" id="content-sec">
+    <section class="calcu py-5 d-flex" id="content-sec" data-aos="fade-down" data-aos-delay="100" data-aos-duration="600">
 
         <div class="container shadow-sm bg-primary-gradient py-5" id="tilecalc">
             <div class="row text-center">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h3 class="fw-bold text-success">Tile Calculator <i class="fas fa-calculator"></i></h3>
+                    <h3 class="fw-bold">Tile Calculator <i class="fas fa-calculator"></i></h3>
                 </div>
                 
             </div>
@@ -227,18 +227,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5 fs-3">
                         <div class="card shadow-sm h-100  ">
                             <div class="card-body px-4 py-5 px-md-5 ">
                                 <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;"></div>
                                 <h5 class="fw-bold card-title text-center mb-4">Approximate Results </h5>
                                 
- <div style="position:relative;"class="mb-2" >
-        <div id="computation-result"  >
-          <h6>Tiles: <span id="tile-value" style="color:#7D99F8;">0</span></h6>
-          <h6>Recommended Grout Spacing: <span id="grout-value" style="color:#7D99F8;">0</span></h6>
-          <h6>kg Grout: <span id="kg-grout" style="color:#7D99F8;">0</span> <span id="kg-grout-sqm-per-bag"></span></h6>
-          <h6>kg Adhesive: <span id="kg-adhesive" style="color:#7D99F8;">0</span> <span id="kg-adhesive-sqm-per-bag"></span></h6>
+ <div style="position:relative;"class="mb-2 d-flex" >
+        <div id="computation-result" class= >
+          <h6 >Tiles: <span id="tile-value" class="ms-2 " style="color:#7D99F8;"> 0</span></h6>
+          <h6>Recommended Grout Spacing: <span id="grout-value" class="ms-2 " style="color:#7D99F8;"> 0</span></h6>
+          <h6>kg Grout: <span id="kg-grout" style="color:#7D99F8;" class="ms-2 "> 0</span> <span id="kg-grout-sqm-per-bag"> </span></h6>
+          <h6>kg Adhesive: <span id="kg-adhesive" style="color:#7D99F8;" class="ms-2 "> 0</span> <span id="kg-adhesive-sqm-per-bag"> </span></h6>
         </div> 
       </div>
                             </div>
@@ -276,57 +276,7 @@
   </div>
 
 
-
-    <section class="py-5 mt-5">
-        <div class="container py-5">
-            <div class="row mb-5">
-                <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <p class="fw-bold text-success mb-2">Testimonials</p>
-                    <h2 class="fw-bold"><strong>What People Say About us</strong></h2>
-                    <p class="text-muted w-lg-50">No matter the project, our team can handle it.&nbsp;</p>
-                </div>
-            </div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-sm-flex justify-content-sm-center">
-                <div class="col mb-4">
-
-                    <div class="d-flex flex-column align-items-center align-items-sm-start">
-                        <p class="bg-light border rounded border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="assets/img/team/avatar2.jpg">
-                            <div>
-                                <p class="fw-bold text-primary mb-0">John Smith</p>
-                                <p class="text-muted mb-0">Erat netus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start">
-                        <p class="bg-light border rounded border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="assets/img/team/avatar4.jpg">
-                            <div>
-                                <p class="fw-bold text-primary mb-0">John Smith</p>
-                                <p class="text-muted mb-0">Erat netus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex flex-column align-items-center align-items-sm-start">
-                    <div class="col mb-4">
-                        <p class="bg-light border rounded border-light p-4">Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit class dapibus, aliquet morbi.</p>
-                        <div class="d-flex"><img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50" src="assets/img/team/avatar5.jpg">
-                            <div>
-                                <p class="fw-bold text-primary mb-0">John Smith</p>
-                                <p class="text-muted mb-0">Erat netus</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-    <section class="py-5" id="contact">
+  <section class="py-5" id="contact">
         <div class="container">
             <div class="row mb-5" data-aos="fade-right" data-aos-duration="600" data-aos-delay="100">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -380,7 +330,7 @@
         </div>
     </section>
     <footer class="bg-primary-gradient">
-        <div class="container py-4 py-lg-5" data-aos="fade-down" data-aos-duration="500" data-aos-delay="300">
+        <div class="container py-4 py-lg-5" data-aos="fade-down" data-aos-duration="600" data-aos-delay="100">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 text-center text-lg-start d-flex flex-column item">
                     <h3 class="fs-6 fw-bold">Services</h3>
@@ -566,8 +516,6 @@ $('document').ready(function() {
             document.documentElement.scrollTop = 0;
         }
     </script>
-
-
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="{% static 'assets/bootstrap/js/banner.min.js' %}"></script>
     <script src="{% static 'assets/js/bs-init1.js'%}"></script>

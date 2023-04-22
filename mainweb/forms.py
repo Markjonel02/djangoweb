@@ -12,13 +12,7 @@ class Customers_crudForm(ModelForm):
         model = Customers_crud
         fields = '__all__'
         
-def clean_Customers(self):
-        email = self.cleaned_data["CustomersEmail"]
-        try:
-            User.objects.get(CustomersEmail=CustomersEmail)
-        except User.DoesNotExist:
-            return email
-        raise forms.ValidationError(_("A user with that email already exists."))        
+   
 class Product_crudForm(ModelForm):
     class Meta:
         model = Product_crud

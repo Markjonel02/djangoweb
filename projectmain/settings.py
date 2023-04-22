@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'active_link',#after installing this active link apps using "pip install django-active-link" install "active_link" to your apps 
     
     #add the following
     #'django.contrib.sites',
@@ -51,28 +50,32 @@ INSTALLED_APPS = [
     #'allauth.socialaccount.providers.google', #for google auth
 ]
 
-""" AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = (
  #used for default signin such as loggin into admin panel
  'django.contrib.auth.backends.ModelBackend', 
   
  #used for social authentications
- 'allauth.account.auth_backends.AuthenticationBackend',
+ #'allauth.account.auth_backends.AuthenticationBackend',
+ 
  )
+AUTH_USER_MODEL = 'mainweb.UserManagement' #This tells Django to use your custom user model instead of the default user mode
+
+
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = '/tutorials'
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
- """
+#LOGIN_REDIRECT_URL = '/tutorials'
+#SOCIALACCOUNT_PROVIDERS = {
+#   'google': {
+#       'SCOPE': [
+#            'profile',
+#            'email',
+#        ],
+#        'AUTH_PARAMS': {
+#            'access_type': 'online',
+#        }
+#    }
+#}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -166,7 +169,8 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#this is will redict to dashboard after user loggedin
+
+#this is will redict to dashboard after user logged in
 LOGIN_REDIRECT_URL = 'dash'
 
 LOGIN_URL= 'login'

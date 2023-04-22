@@ -70,7 +70,7 @@
                             <td>{{i.CustomersName}}</td>
                             <td>{{i.ContactNumber}}</td>
                             <td>{{i.CustomersEmail}}</td>
-                            <td>{{i.CustomersAdd}}&nbsp;</td>
+                            <td>{{i.CustomersAdd}}</td>
                             <td><a href="#" class="btn btn-outline-primary" id="editm"><i class="fas fa-edit"></i>Edit</a>
                                 <a href="{%url 'customer_del' i.id %} " class="btn btn-outline-danger"><i class="fas fa-trash"></i> Delete</a></td>
                         </tr>
@@ -102,16 +102,16 @@
                                 <label for="Cname"><i class="fas fa-user ms-2 "></i> Customers Name </label>
                             </div>
                             <div class="form-floating mb-2 ">
-                                <input name="ContactNumber" type="number " class="form-control fs-6 " id="Cnumber">
+                                <input name="ContactNumber" type="number" class="form-control fs-6 " id="Cnumber">
                                 <label for="Cnumber "><i class="fas fa-phone ms-2 "></i> Contact Number</label>
                             </div>
                             <div class="form-floating mb-2 ">
-                                <input name="CustomersEmail" type="email " class="form-control fs-6 " id="Cemail">
+                                <input name="CustomersEmail" type="email" class="form-control fs-6 " id="Cemail">
                                 <label for="Cemail "><i class="fas fa-envelope ms-2 "></i> Email </label>
                             </div>
                             <div class="form-floating ">
-                                <input name="CustomersAdd" type="text " class="form-control fs-6 " id="Cadd">
-                                <label for="Cadd "><i class="fas fa-map ms-2 "></i> Address</label>
+                                <input name="CustomersAdd" type="text" class="form-control fs-6 " id="Cadd">
+                                <label for="Cadd"><i class="fas fa-map ms-2 "></i> Address</label>
                             </div>
                             <input type="hidden" name="editpk" id="Hinput">
                     </div>
@@ -148,7 +148,7 @@
     <!-- ========== jquery ========== -->
     <script>
         $(document).ready(function() {
-            $('.table-responsive table tr td ').on('click', '#editm', function() {
+            $('.table-responsive table tr td').on('click', '#editm', function() {
                 var cname = $(this).parents('tr').attr('data-cname');
                 var cnumber = $(this).parents('tr').attr('data-cnumber');
                 var cemail = $(this).parents('tr').attr('data-cemail');

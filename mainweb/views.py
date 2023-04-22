@@ -51,10 +51,8 @@ def edit_customers(request):
      customers_edit.ContactNumber = request.POST['']
      customers_edit.CustomersEmail = request.POST['']
      customers_edit.CustomerAdd = request.POST['']
-     messages.error(request, 'All fields are required')
      return redirect('customer_list')
- 
-   
+
    #delet function
 @login_required()
 def del_customers(request,pk):
