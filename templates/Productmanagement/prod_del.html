@@ -1,0 +1,30 @@
+{% extends 'maintemp/base_d.html' %}
+
+{% block content %}
+    
+
+    
+    <main>
+        <div class="container text-center">
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                <br><br>
+                <div class="alert alert-danger" role="alert">
+                    Are you sure you want to delete "{{product_archive.ItemName}}"?
+                </div>
+
+                <p>
+                    <a href="{% url 'product_list' %}">
+                        <-- Go back</a>
+                </p>
+
+                <p>
+                    <input class="btn btn-danger" type="submit" value="Confirm" >
+                </p>
+            </form>
+        </div>
+
+    </main>
+
+    {% endblock  %}

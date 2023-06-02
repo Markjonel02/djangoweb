@@ -1,0 +1,23 @@
+{% extends 'maintemp/base_d.html' %}
+
+{% block content %}
+    
+
+    
+    <main>
+        <main>
+                <div class="content w-50 h-50 border-info ms-lg-5" style=" padding:10 5 0; margin-top:2%;" >
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{form.as_p}}
+            
+                        <div class="modal-footer">   
+                            <button type="submit" class="btn btn-primary d-inline" value="submit"><i class="fas fa-save"></i> Save </button>
+                            <a href="{% url 'product_list'%}"  class="btn btn-secondary ms-2" value="Back"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back </a>
+                        </div>
+                    </form>
+                </div>
+              
+            </main>
+    </main>
+    {% endblock  %}

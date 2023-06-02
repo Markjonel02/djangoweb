@@ -1,0 +1,191 @@
+ {% extends 'maintemp/base_d.html' %} {%block content%}
+<div id="wrapper">
+<style>
+    errorlist li  {
+        color: #f00;
+    }
+</style>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+
+            <div class="container-fluid pt-3" style="overflow: auto;background: #F4F5FF;opacity: 1;filter: brightness(102%);">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-dark mb-0 fw-bold" style="--bs-body-font-weight: normal;font-size: 2.1rem;">Product Management</h3>
+                </div>
+            </div>
+            <div class="container" style="margin-bottom: 10px;margin-top: -10px;">
+                <div class="float-start float-md-end mt-5 mt-md-0 search-area"></div>
+                <div class="row">
+                    <div class="col-xl-4 offset-xl-3" style="height: 50px;">
+                        <form class="search-form" action="{%url 'search'%}">
+                           
+                              <div class="input-group " style="background: #eee; ">
+                                <span class="input-group-text "><i class="fa fa-search "></i></span>
+                                <input class="form-control " type="text" name="search" placeholder="I am looking for.. " style="font-size: 17px; ">
+                                <button class="btn btn-light link-primary rounded-2 shadow-sm " type="submit " style="border-color: var(--bs-btn-border-color);margin-left: 3px; ">Search</button> </div>
+                        </form>
+                    </div>
+                    <div class="col-l-2 d-flex justify-content-center ">
+                        <div class="d-flex flex-row flex-shrink-1 ">
+                            <a class="btn btn-primary d-inline-flex flex-row justify-content-center align-items-center flex-wrap mb-auto shadow-sm " role="button" data-bss-hover-animate="pulse" href="#addModal" data-bs-toggle="modal" style="margin-top:40px; "><i class="fas fa-plus-circle edit-icon "></i>&nbsp;New</a>
+                            <a class="btn btn-danger d-inline-flex flex-row justify-content-center align-items-center flex-wrap mb-auto" role="button" href="#archive" data-bs-toggle="modal" style="text-align: center;margin-top: 40px;margin-left: 10px; "><i class="fas fa-archive"></i> <span class="ms-1 ">Archived Item</span> </a>
+
+                            <div>
+
+
+                            </div>
+                            <!-- ========== Start new item ========== -->
+                            <div class="modal fade"  data-bs-backdrop="static" role="dialog" tabindex="-1" id="addModal">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4>Add Item</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body w-100">
+
+                                            <form method="POST">
+                                                {% csrf_token %}
+                                             {{all_products.as_p}}
+                                             
+                                                <div class="modal-footer "><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                                    <button class="btn btn-primary" type="submit">Save</button></div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ========== End new item ========== -->
+
+
+                            <!-- ========== Start Archive ========== -->
+                            <div class="modal fade " data-bs-backdrop="static"role="dialog" tabindex="-1" id="archiveModal ">
+                                <div class="modal-dialog modal-lg " role="document">
+                                    <div class="modal-content ">
+                                        <div class="modal-header ">
+                                            <h4>Archived Items</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body ">
+                                                        
+                                        </div>
+                                        <div class="modal-footer "><button class="btn btn-light " type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary " type="button">Save</button></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ========== End Archive ========== -->
+
+
+                        </div>
+                    </div>
+                    <div class="w-100 "></div>
+                    <div class="w-100 "></div>
+                </div>
+            </div>
+            <div class="container-fluid " style="margin-top: 20px; ">
+                <div class="table-responsive-sm text-center d-flex flex-shrink-0 justify-content-center align-items-center align-content-center align-self-center shadow-sm rounded-2 " style="background: #ffff;position: static; ">
+                    <table class="table table-hover table-borderless rounded-2 ">
+                        <thead class="rounded-2 ">
+                            <tr>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Item Name</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Brand</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Size</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Category</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Price</th>
+                                <th class="text-bg-primary" style="background: #4072C9; ">Current Stock</th>
+                                <th class="text-bg-primary" style="background: #4072C9; "> Max Stock</th>
+
+                                <th class="text-center text-bg-primary " style="background: #4045b0; ">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for i in display_product %}
+
+                            <tr>
+                                <td class="text-dark ">{{i.ItemName}}</td>
+                                <td class="text-dark ">{{i.Brand}}</td>
+                                <td class="text-dark ">{{i.Sizes}}</td>
+                                <td class="text-dark ">{{i.Category}}</td>
+                                <td class="text-dark ">{{i.Price}}</td>
+                                <td class="text-dark ">{{i.Current_Stock}}</td>
+                                <td class="text-dark ">{{i.Max_Stock}}</td>
+
+                                <td>
+                                    <a href="{% url 'product_edit' i.pk %} " class="btn btn-outline-primary " data-bss-hover-animate="pulse " type="button "><i class="fas fa-edit "></i> Edit</a>
+                                    <a href="{% url 'add_stock' i.pk%} " class="btn btn-outline-primary " data-bss-hover-animate="pulse " type="button "><i class="fas fa-edit "></i>Add stock</a>
+                                    <a href="{% url 'product_del' i.pk %} " class="btn btn-outline-danger " data-bss-hover-animate="pulse " type="button "><i class="fas fa-archive "></i>  Delete</a>
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div><a class="border rounded d-inline scroll-to-top " href="#page-top " style="background: rgb(78,115,223); "><i class="fas fa-angle-up "></i></a>
+
+
+
+
+</div>
+<div class="modal fade" id="archive" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Archived Items</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="container-fluid" style="margin-top: 20px;">
+                    <div class="table-responsive-sm text-center d-flex flex-shrink-0 justify-content-center align-items-center align-content-center align-self-center shadow-sm rounded-2" style="background: #ffff;position: static;">
+                        <table class="table table-hover table-borderless rounded-2">
+                            <thead class="rounded-2 ">
+                                <tr>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Item Name</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Size</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Category</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Price</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Stock</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Deletd Time</th>
+                                    <th class="text-bg-primary" style="background: #4072C9;">Action</th>
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for d in archive %}
+
+                                <tr>
+                                    <td class="text-dark">{{d.ItemName}}</td>
+                                    <td class="text-dark">{{d.Size}}</td>
+                                    <td class="text-dark">{{d.Category}}</td>
+                                    <td class="text-dark">{{d.Price}}</td>
+                                    <td class="text-dark">{{d.Stock}}</td>
+                                    <td class="text-dark">{{d.Delete_at}}</td>
+                                    <td class="text-dark">
+                                        <a href="">Delete</a>
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

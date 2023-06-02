@@ -20,9 +20,11 @@ from django.conf import settings
 urlpatterns = [
     path('', include('Userspage.urls')),
     path('guest/', include('Guestpage.urls')),
-    #path('Guestpage/', include('allauth.urls')),
     path('main/', include('mainweb.urls')),
-    path('crud/',include('CrudSamp.urls')),
+    path('customerprofile',include('CustomerProfile.urls')),
+    path('Usermanagement',include('Usermanagement.urls')),
+    path('ProductManagement/',include('ProductManagement.urls')),
+    path('Pos/',include('PointOfSale.urls')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:

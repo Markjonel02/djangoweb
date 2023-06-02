@@ -1,0 +1,28 @@
+{% extends 'maintemp/base_d.html' %}
+
+{% block  content %}
+    
+<main>
+    <div class="container text-center">
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <br><br>
+            <div class="alert alert-danger" role="alert">
+                Are you sure you want to delete "{{customers_crud.customer_Lname }}"?
+            </div>
+
+            <p>
+                <a href="{% url 'customer_list' %}">
+                    <-- Go back</a>
+            </p>
+
+            <p>
+                <input class="btn btn-danger" type="submit" value="Confirm" onclick="del()">
+            </p>
+        </form>
+    </div>
+
+</main>
+{% endblock   %}
+    

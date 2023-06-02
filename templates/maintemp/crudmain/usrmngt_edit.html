@@ -1,0 +1,43 @@
+{% extends 'maintemp/usermanagement.html' %}
+{% block usermanagement_edit %}
+<div class="container ">
+  <div class="table-responsive text-center text-dark text-bg-light rounded-2 shadow-sm " style="background: #eeeeee; ">
+      <table class="table ">
+          <thead>
+              <tr>
+                  <th class="text-light" style="background: #4072C9;">Email</th>
+                  <th class="text-light" style="background: #4072C9;">Username</th>
+                  <th class="text-light" style="background: #4072C9;">Firstname</th>
+                  <th class="text-light" style="background: #4072C9;">Superuser</th>
+                  <th class="text-light" style="background: #4072C9;">Staff</th>
+                  <th class="text-light" style="background: #4072C9;">Active</th>
+                  <th class="text-light" style="background: #4072C9;">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              
+              {% for editforms in editform  %}
+            
+                  
+              <tr>
+                  <td>{{editforms.email}}</td>
+                  <td>{{editforms.user_name}}</td>
+                  <td>{{editformsfirst_name}}</td>
+                  <td>{{editforms.is_superuser}}</td>
+                  <td>{{editforms.is_staff}}</td>
+                  <td>{{editforms.is_active}}</td>
+                  <td><a href="{% url 'userman' editforms.id %} " class="btn btn-secondary">Edit</a></td>
+              </tr>
+
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+</div>
+</div>
+
+
+
+{% endblock  %}
+  
+   

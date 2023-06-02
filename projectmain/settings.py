@@ -34,47 +34,34 @@ INSTALLED_APPS = [
     'Userspage.apps.UserspageConfig',
     'mainweb.apps.MainwebConfig',
     'Guestpage.apps.GuestpageConfig',
-    'CrudSamp.apps.CrudsampConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'CustomerProfile',
+    'Usermanagement',
+    'ProductManagement',
+    'PointOfSale',
+    'widget_tweaks',
     
-    #add the following
-    #'django.contrib.sites',
-    #'allauth',
-    #'allauth.account',
-    #'allauth.socialaccount',
-    #'allauth.socialaccount.providers.google', #for google auth
+    
+    #add the 
 ]
+AUTH_USER_MODEL = 'Usermanagement.CustomUser'
 
 AUTHENTICATION_BACKENDS = (
  #used for default signin such as loggin into admin panel
  'django.contrib.auth.backends.ModelBackend', 
   
- #used for social authentications
- #'allauth.account.auth_backends.AuthenticationBackend',
+
  
  )
-AUTH_USER_MODEL = 'mainweb.UserManagement' #This tells Django to use your custom user model instead of the default user mode
 
 
 SITE_ID = 1
 
-#LOGIN_REDIRECT_URL = '/tutorials'
-#SOCIALACCOUNT_PROVIDERS = {
-#   'google': {
-#       'SCOPE': [
-#            'profile',
-#            'email',
-#        ],
-#        'AUTH_PARAMS': {
-#            'access_type': 'online',
-#        }
-#    }
-#}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -144,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Manila'
 
 USE_I18N = True
 

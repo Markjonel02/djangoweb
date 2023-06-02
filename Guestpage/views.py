@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 #from mainweb.views import *
-from mainweb.models import *#PhotoUP, PhotoUPporcelain
+from ProductManagement.models import Product_crud
 
 
 
@@ -16,15 +16,15 @@ def base(request):
 
 def guest_up(request):
     #if request.method == 'GET':     
-     posts = PhotoUP.objects.filter(Category='adhesive')
+     posts = Product_crud.objects.filter(Category='adhesive')
      return render(request, 'guesttemp/Adhesive.html',{'posts':posts})
 
 def porcelain_up(request):
-     pos_p = PhotoUP.objects.filter(Category='porcelain')
+     pos_p = Product_crud.objects.filter(Category='porcelain')
      return render(request, 'guesttemp/Porcelaintile.html',{'pos_p':pos_p}) 
 
 def ceramic_up(request):
-    cer_p = PhotoUP.objects.filter(Category='ceramic')
+    cer_p = Product_crud.objects.filter(Category='ceramic')
     return render(request, 'guesttemp/ceramic.html',{'cer_p':cer_p})
 """ def edit_photo(request, pk):
     photo = Photo.objects.get(pk=pk)

@@ -5,21 +5,10 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm #add this
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from Usermanagement import views
 #from mainweb import views as Mainweb_views
 # Create your views here.
 
-#Register
-""" def register_request(request):
-	if request.method == "POST":
-		form = NewUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			login(request, user)
-			messages.success(request, "Registration successful.")
-			return redirect('dash')
-		messages.error(request, "Unsuccessful registration. Invalid information.")
-	form = NewUserForm()
-	return render (request, 'usertemp/register.html') """
 
     #login Form
 login_required()
@@ -31,8 +20,8 @@ def login_request(request):
 			username = form.cleaned_data.get('username')
 			password = form.cleaned_data.get('password')
 			user = authenticate(request, username=username, password=password)
+   
 			if user is not None:
-       
        #log the user in 
 				login(request, user)
     #redirect to dashboard
@@ -40,6 +29,7 @@ def login_request(request):
 			else:
 				messages.error(request,'Invalid username or password.')
 		else:
+      
       #this will return to login form if the user input a incorrect username or password 
 			messages.error(request,"Invalid username or password.")
 	form = AuthenticationForm()

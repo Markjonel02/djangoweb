@@ -1,0 +1,68 @@
+{% extends 'maintemp/base_d.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/card.css' %}">
+<style>
+    .card-animation-cont{
+        position: relative;
+        display: inline-flex;
+        width: 31%;
+    }
+     span{
+        display: flex-inline;
+        justify-content: space-between;
+        
+    }
+</style>
+<div class="container-fluid pt-3" style="overflow: auto;background: #F4F5FF;opacity: 1;filter: brightness(102%);">
+    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+        <h3 class="text-dark mb-0 fw-bold" style="--bs-body-font-weight: normal;font-size: 2.1rem;">Point of Sale</h3>
+    </div>
+</div>
+
+<div class="container d-flex-inline  ">
+    <div class="row d-flex ">
+        <div class="col-md-9 visible ">
+            <div class="row ">
+                <div class="col">
+                    
+                    <div class="card-animation-cont">
+                        <!-- Duplicate the following div to add cards -->
+                        <div class="card">
+                          <img src="https://picsum.photos/id/556/1080/1200" alt="" />
+                          <div class="info">
+                            <strong>Product Name</strong>
+                            <span class="sub-title ">Category</span>
+                            <hr />
+                            <div class="hide-info">
+                              <span >Size:100</span>
+                              <span class="ms-5 ">Price: 200</span>                        
+                            </div>
+                            <div class="quantity">
+                                
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                 
+
+ 
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 rounded-2" style="border: 3px solid gray;background-color:#FDF8FE">
+           <center class="mt-2"><h5>Current Product</h5></center> 
+           <hr>
+        <div class="wrapper">
+            <div class="row">
+                <span class="fw-semibold">Product name:</span>
+                <p class="fs-6">$5.00</p>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}
+    

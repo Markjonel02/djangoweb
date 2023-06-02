@@ -1,0 +1,17 @@
+{% extends 'maintemp/base_d.html' %}
+{% block content %}
+<main>
+    
+    <div class="container-fluid d-flex ">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <div class="footer">
+                <button type="submit">Add</button>
+                <a href="{% url 'product_list'%}" type="button">Back</a>
+            </div>
+        </form>
+
+</main>
+{% endblock %}

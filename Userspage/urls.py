@@ -8,5 +8,6 @@ urlpatterns = [
 #    path('register/',Userpage_views.register_request ,name='register'),
     path('logout/',Userpage_views.logout_request, name="logout"),
    
-    
+  
 ]
+   

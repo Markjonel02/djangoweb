@@ -7,32 +7,8 @@ from django.contrib.auth.models import User
 
 
 #Crud Form
-class Customers_crudForm(ModelForm):    
-    class Meta:
-        model = Customers_crud
-        fields = '__all__'
         
-   
-class Product_crudForm(ModelForm):
-    class Meta:
-        model = Product_crud
-        fields = '__all__'
         
 class SearchForm(forms.Form):
     query = forms.CharField(max_length=100)
     
-    #usermanagemnt 
-
-
-class PhotoUPForm(forms.ModelForm):
-    class Meta:
-        model = PhotoUP
-        fields = ('Itemname','Size','Category','Image')
-
-
-# -- usermanagement -- 
-class CustomUserManagementForm(ModelForm):
-    class Meta:
-        model = UserManagement()
-        fields = ('email','user_name','first_name','is_staff','is_active')
-       

@@ -1,0 +1,123 @@
+{%extends 'maintemp/base_d.html'%}{%block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<div id="wrapper">
+<style>
+    .errorlist{
+        color: red;
+    }
+
+    .mess{
+        margin: auto;
+        position: absolute;
+        z-index: 1;
+        width: 45%;
+        left:35%;
+        margin-top: 10px;
+    }.mess > p {
+        text-align: center;
+    }
+</style>
+
+    
+    <div class="d-flex flex-column" id="content-wrapper">
+        
+{% for m in messages %}
+
+{% if m.tags == 'warning' %}
+<div class="mess container-fluid p-0 pt-1 alert-dismissible bg-danger rounded-2" role="alert" data-aos="fade-left" data-aos-delay ="300" data-aos-anchor-placement = "top-bottom"  id="alert">
+    <p class=" text-light fs-5">{{ m }}</p>      
+  </div>    
+  {% elif m.tags == 'success' %}
+  <div class="mess container-flui p-0 alert alert-dismissible bg-success rounded-2" role="alert" data-aos="fade-left" data-aos-delay ="300" data-aos-anchor-placement = "top-bottom" id="alert">
+    <p class=" fs-5 text-light font-md">{{m}}</p>
+  </div>
+{% endif %}   
+{% endfor %}
+        <div id="content">
+
+            <div class="container-fluid pt-3" style="overflow: auto;background: #F4F5FF;opacity: 1;filter: brightness(102%);">
+                <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-dark mb-0 fw-bold" style="--bs-body-font-weight: normal;font-size: 2.1rem;">Customer Profile</h3>
+                </div>
+            </div>
+            <div class="container d-flex justify-content-end">
+                <button type="button" class="btn btn-primary m-3  justify-content-end" data-bs-toggle="modal" data-bs-target="#addmodal" data-bs-whatever="@getbootstrap"><i class="fas fa-user-plus    "></i> Add Customer</button>
+
+                <div class="modal fade" id="addmodal" tabindex="-1" aria-labelledby="exampleModalLabel" data-bs-backdrop="static" aria-hidden="true">
+                    <div class="modal-dialog" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"> Customers Info</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                 {{customers_form.as_p}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" value="submit"><i class="fas fa-save"></i> Add </button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="table-responsive text-center d-flex flex-row justify-content-center align-items-center align-content-center align-self-center mt-auto rounded-2 shadow-sm" style="background: #fff;">
+                    <table class="table">
+
+                        <tr class="text-light" style="background: #4072C9; ">
+                            <th>First Name</th>
+                            <th>M.i.</th>
+                            <th>Last Name</th>
+                            <th>Sex</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Contact number</th>
+                            <th>Actions</th>
+                        </tr>
+
+
+
+                        {% for i in customers_crud %}
+                        <tr>
+                            <td>{{i.customer_Fname}}</td>
+                            <td>{{i.customer_Middlename}}</td>
+                            <td>{{i.customer_Lname}}</td>
+                            <td>{{i.sex}}</td>
+                            <td>{{i.email}}</td>
+                            <td>{{i.address}}</td>
+                            <td>{{i.contactnumber}}</td>
+                            <td ><a href="{%url 'edit_customer' i.id %}" class="btn btn-outline-primary mb-2 d-inline-flex"><i class="fas fa-edit"></i>Edit</a>
+                                <a href="{%url 'del_customer' i.id %} " class="btn btn-outline-danger mb-2"><i class="fas fa-trash"></i> Delete</a></td>
+                        </tr>
+                        {% endfor %}
+
+            
+                </div>
+                
+                </table>
+            </div>
+        </div>
+
+        <!-- Modal -->
+
+    </div>
+
+</div><a class="border rounded d-inline scroll-to-top " href="#page-top " style="background: rgb(78,115,223); "><i class="fas fa-angle-up "></i></a>
+</div>
+</div>
+
+<script>
+    window.onload = function() {
+    var duration = 3000; //2 seconds
+    setTimeout(function () {
+         $('#alert').hide(); }, duration);
+        
+};
+</script>
+  
+    {% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'maintemp/base_d.html' %}
+
+{% block product %}
+<main>                    
+    <div class="card-animation-cont">
+        <!-- Duplicate the following div to add cards -->
+        {% for porce in pos_p %}
+        <div class="card ">
+            <img src="{{porce.Image.url}}" alt="" />
+            <div class="info">
+                <strong>{{porce.Itemname}}</strong>
+                <span class="sub-title">Category: {{porce.Category}}</span>
+                <hr/>
+                <div class="hide-info">
+                    <span class="text d-flex ">
+             <p class="ms-2">Size: {{porce.Size}}</p>
+              <p class="ms-2">Price:{{porce.PhotoUp_Price}}</p>
+              </span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div></main>               
+{% endblock  %}
+    

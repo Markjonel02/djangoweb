@@ -1,5 +1,6 @@
- {% extends 'guesttemp/base.html' %}{%load static %} {% block productcat%}
+ {% extends 'guesttemp/base.html' %}{%load static %} {% block product%}
 <link rel="stylesheet" href="{% static 'assets/css/card.css' %}">
+
 
 <div class="row pb-5 mb-2 ">
 
@@ -13,8 +14,9 @@
                 <span class="sub-title">Category: {{porce.Category}}</span>
                 <hr/>
                 <div class="hide-info">
-                    <span class="text">
-             <p>Size: {{porce.Size}}</p>
+                    <span class="text d-flex ">
+             <p class="ms-2">Size: {{porce.Size}}</p>
+              <p class="ms-2">Price:{{porce.PhotoUp_Price}}</p>
               </span>
                 </div>
             </div>
