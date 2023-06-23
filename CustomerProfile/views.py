@@ -26,7 +26,7 @@ def customer_list(request):
     
         
 
-   
+login_required()
 def customer_edit(request,id):
     customeredit = get_object_or_404(Customerprofile,id=id)
     editform  = Customers_FormUserChangeForm(instance=customeredit)

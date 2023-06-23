@@ -1,28 +1,53 @@
- {% extends 'maintemp/base_d.html' %} {%block content%}
+ {% extends 'maintemp/base_d.html' %}
+ {%block content%}
 <div id="wrapper">
 <style>
     errorlist li  {
         color: #f00;
     }
+    .mess{
+        margin: auto;
+        position: absolute;
+        z-index: 1;
+        width: 45%;
+        left:35%;
+        margin-top: 10px;
+    }.mess > p {
+        text-align: center;
+    }
 </style>
+      
+
     <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
+            {% for m in messages %}
 
+            {% if m.tags == 'warning' %}
+            <div class="mess container-fluid p-0 pt-1 alert-dismissible bg-danger rounded-2" role="alert" data-aos="fade-left" data-aos-delay ="300" data-aos-anchor-placement = "top-bottom"  id="alert">
+                <p class=" text-light fs-5">{{ m }}</p>      
+              </div>    
+              {% elif m.tags == 'success' %}
+              <div class="mess container-flui p-0 alert alert-dismissible bg-success rounded-2" role="alert" data-aos="fade-left" data-aos-delay ="300" data-aos-anchor-placement = "top-bottom" id="alert">
+                <p class=" fs-5 text-light font-md">{{m}}</p>
+              </div>
+            {% endif %}   
+            {% endfor %}
             <div class="container-fluid pt-3" style="overflow: auto;background: #F4F5FF;opacity: 1;filter: brightness(102%);">
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
                     <h3 class="text-dark mb-0 fw-bold" style="--bs-body-font-weight: normal;font-size: 2.1rem;">Product Management</h3>
                 </div>
             </div>
+
             <div class="container" style="margin-bottom: 10px;margin-top: -10px;">
                 <div class="float-start float-md-end mt-5 mt-md-0 search-area"></div>
                 <div class="row">
                     <div class="col-xl-4 offset-xl-3" style="height: 50px;">
-                        <form class="search-form" action="{%url 'search'%}">
-                           
-                              <div class="input-group " style="background: #eee; ">
+                        <form class="search-form" method="POST" id="search-form">
+                           {% csrf_token %}
+                              <div class="input-group">
                                 <span class="input-group-text "><i class="fa fa-search "></i></span>
-                                <input class="form-control " type="text" name="search" placeholder="I am looking for.. " style="font-size: 17px; ">
-                                <button class="btn btn-light link-primary rounded-2 shadow-sm " type="submit " style="border-color: var(--bs-btn-border-color);margin-left: 3px; ">Search</button> </div>
+                                <input type="search" class="search-hover" name="searchProd" placeholder="search here..."  id="search-input" />
+                                 </div>
                         </form>
                     </div>
                     <div class="col-l-2 d-flex justify-content-center ">
@@ -35,7 +60,7 @@
 
                             </div>
                             <!-- ========== Start new item ========== -->
-                            <div class="modal fade"  data-bs-backdrop="static" role="dialog" tabindex="-1" id="addModal">
+                            <div class="modal fade"  data-bs-backdrop="static" role="dialog" tabindex="-1" id="addModal" >
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -43,12 +68,12 @@
                                         </div>
                                         <div class="modal-body w-100">
 
-                                            <form method="POST">
+                                            <form method="POST" enctype="multipart/form-data">
                                                 {% csrf_token %}
                                              {{all_products.as_p}}
                                              
                                                 <div class="modal-footer "><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
-                                                    <button class="btn btn-primary" type="submit">Save</button></div>
+                                                    <button class="btn btn-primary" type="submit">Add</button></div>
                                             </form>
                                         </div>
 
@@ -82,9 +107,9 @@
                     <div class="w-100 "></div>
                 </div>
             </div>
-            <div class="container-fluid " style="margin-top: 20px; ">
+            <div class="container-fluid " style="margin-top: 20px; "  id="search-results">
                 <div class="table-responsive-sm text-center d-flex flex-shrink-0 justify-content-center align-items-center align-content-center align-self-center shadow-sm rounded-2 " style="background: #ffff;position: static; ">
-                    <table class="table table-hover table-borderless rounded-2 ">
+                    <table class="table table-hover table-borderless rounded-2 " >
                         <thead class="rounded-2 ">
                             <tr>
                                 <th class="text-bg-primary" style="background: #4072C9; ">Item Name</th>
@@ -94,7 +119,7 @@
                                 <th class="text-bg-primary" style="background: #4072C9; ">Price</th>
                                 <th class="text-bg-primary" style="background: #4072C9; ">Current Stock</th>
                                 <th class="text-bg-primary" style="background: #4072C9; "> Max Stock</th>
-
+                                <th class="text-bg-primary" style="background: #4072C9; "> Status</th>
                                 <th class="text-center text-bg-primary " style="background: #4045b0; ">Actions</th>
                             </tr>
                         </thead>
@@ -110,12 +135,15 @@
                                 <td class="text-dark ">{{i.Price}}</td>
                                 <td class="text-dark ">{{i.Current_Stock}}</td>
                                 <td class="text-dark ">{{i.Max_Stock}}</td>
+                                <td class="text-dark ">{{i.Status}}</td>
 
                                 <td>
                                     <a href="{% url 'product_edit' i.pk %} " class="btn btn-outline-primary " data-bss-hover-animate="pulse " type="button "><i class="fas fa-edit "></i> Edit</a>
                                     <a href="{% url 'add_stock' i.pk%} " class="btn btn-outline-primary " data-bss-hover-animate="pulse " type="button "><i class="fas fa-edit "></i>Add stock</a>
                                     <a href="{% url 'product_del' i.pk %} " class="btn btn-outline-danger " data-bss-hover-animate="pulse " type="button "><i class="fas fa-archive "></i>  Delete</a>
                                 </td>
+                                {% empty %}
+                                <p>no resutls</p>
                             </tr>
 
                             {% endfor %}
@@ -167,7 +195,7 @@
                                     <td class="text-dark">{{d.Size}}</td>
                                     <td class="text-dark">{{d.Category}}</td>
                                     <td class="text-dark">{{d.Price}}</td>
-                                    <td class="text-dark">{{d.Stock}}</td>
+                                    <td class="text-dark">{{d.Current_Stock}}</td>
                                     <td class="text-dark">{{d.Delete_at}}</td>
                                     <td class="text-dark">
                                         <a href="">Delete</a>
@@ -188,4 +216,12 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.onload = function() {
+    var duration = 3000; //3 seconds
+    setTimeout(function () {
+         $('#alert').hide(); }, duration);        
+};
+</script>
 {% endblock content %}

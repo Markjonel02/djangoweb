@@ -20,17 +20,13 @@ def login_request(request):
 			username = form.cleaned_data.get('username')
 			password = form.cleaned_data.get('password')
 			user = authenticate(request, username=username, password=password)
-   
 			if user is not None:
-       #log the user in 
 				login(request, user)
-    #redirect to dashboard
-				return redirect('dash')    
+				return redirect('dash')
 			else:
 				messages.error(request,'Invalid username or password.')
 		else:
-      
-      #this will return to login form if the user input a incorrect username or password 
+     
 			messages.error(request,"Invalid username or password.")
 	form = AuthenticationForm()
 	return render(request=request, template_name='usertemp/login.html', context={'Login':form})

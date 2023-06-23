@@ -1,68 +1,154 @@
 {% extends 'maintemp/base_d.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'assets/css/card.css' %}">
+
 <style>
-    .card-animation-cont{
-        position: relative;
-        display: inline-flex;
-        width: 31%;
-    }
      span{
         display: flex-inline;
         justify-content: space-between;
         
     }
+    .prod{
+        overflow-y: auto;
+    }
+    .card-body {
+      max-height: 450px;  /* Set a maximum height for the container */
+      overflow-y: auto;  /* Enable vertical scrolling */
+    }
 </style>
-<div class="container-fluid pt-3" style="overflow: auto;background: #F4F5FF;opacity: 1;filter: brightness(102%);">
-    <div class="d-sm-flex justify-content-between align-items-center mb-4">
-        <h3 class="text-dark mb-0 fw-bold" style="--bs-body-font-weight: normal;font-size: 2.1rem;">Point of Sale</h3>
+<main >
+  <div class="container-fluid pt-3 ms-0" style="background: #F4F5FF;opacity: 1;filter: brightness(102%);">
+      <div class="d-sm-flex justify-content-between align-items-center mb-4">
+          <h3 class="text-dark mb-0 fw-bold" style="--bs-body-font-weight: normal;font-size: 2.1rem;">Point of Sale</h3>
+      </div>
+  </div>
+  
+  <div class="container over-flow-auto" >
+      <div class="search d-flex-inline">
+              <input type="search" name="Searchitem" style="border: 0; outline: 0; font-family: 'Quicksand'; font-size: 0.9rem; text-align: center; letter-spacing: px; height:30px;" class="positemsearch w-25 rounded-2" placeholder="Search Item Name"/>       
+           
+            
+          
+          </div>
+      <form action=""  id="SearchForm" class="d-none" >
+          {% csrf_token %}
+          <input type="hidden" id="Searchitem_name" name="Searchitem_name" style="border: 0; outline: 0; font-family: 'Quicksand'; font-size: 0.9rem; text-align: center; letter-spacing: px; height:30px;" class="positemsearch w-25 rounded-2" placeholder="Search Item Name"/>
+      </form>
     </div>
-</div>
+  
+  
+    <div class="container py-2 h-100  ">
+      <div class="row d-flex h-100">
+        <div class="col ">
 
-<div class="container d-flex-inline  ">
-    <div class="row d-flex ">
-        <div class="col-md-9 visible ">
-            <div class="row ">
-                <div class="col">
-                    
-                    <div class="card-animation-cont">
-                        <!-- Duplicate the following div to add cards -->
-                        <div class="card">
-                          <img src="https://picsum.photos/id/556/1080/1200" alt="" />
-                          <div class="info">
-                            <strong>Product Name</strong>
-                            <span class="sub-title ">Category</span>
-                            <hr />
-                            <div class="hide-info">
-                              <span >Size:100</span>
-                              <span class="ms-5 ">Price: 200</span>                        
-                            </div>
-                            <div class="quantity">
-                                
-                            </div>
-                          </div>
-                        </div>
-                    </div>
+          <div class="card"   >
+            <div class="card-body p-2 ms-0" >
+                <div class="col-lg-7 ms-0 w-100 " >
+                  <h5 class="mb-3">
+                        Registered products</h5>
+                  <hr>
+                  {% for prod in pos_prod %}
+                  {% if prod.Status == 'available' %}
+                  <div class="card-animation-cont d-inline-flex mb-2 ms-2" data-productname="{{prod.ItemName}}" data-productid="{{prod.id}}" data-current_stock="{{prod.Current_Stock}}" >
+                    <!-- Duplicate the following div to add cards -->
                  
+                
+                      
+                    <div class="card ">
+                      <img src="{{prod.Image.url}}" alt="" />
+                      <div class="info">
+                          <strong>{{prod.ItemName}}</strong>
+                          <span class="sub-title">Category: {{prod.Category}}</span>
+                          <hr/>
+                          <div class="hide-info">
+                              <span class="text d-flex ">
+                       <p class="ms-2">Size: {{prod.Sizes}}</p>
+                        <p class="ms-2">Price:{{prod.Price}}</p>
+                        </span>
 
- 
+                          <center>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="pos_qty_trigger"> 
+                              Selects quantity
+                            </button>
+                          </center>
+                          </div>
+                      </div>
+                  </div>    
+              </div>
+              {% endif %}
+              {% endfor %}
 
-                    
+            </div>   
+           </div>
+  
+          </div>
+        </div>
+  
+  
+            <div class="col-lg-5">
+  
+              <div class="card bg-primary text-white rounded-3">
+                <div class="card-body">
+                  
+  
+                  
+  
+                  <hr class="my-4">
+  
+                  <div class="d-flex justify-content-between">
+                    <p class="mb-2">Subtotal</p>
+                    <p class="mb-2">$4798.00</p>
+                  </div>
+  
+                
+                  <div class="d-flex justify-content-between mb-4">
+                    <p class="mb-2">Total Amount</p>
+                    <p class="mb-2">$4818.00</p>
+                  </div>
+  
+                  <button type="button" class="btn btn-info btn-block btn-lg">
+                    <div class="d-flex justify-content-between">
+                      <span>$4818.00</span>
+                      <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                    </div>
+                  </button>
+  
                 </div>
-            </div>
+              </div>
+  
+  
+          </div>
         </div>
-        <div class="col-md-3 rounded-2" style="border: 3px solid gray;background-color:#FDF8FE">
-           <center class="mt-2"><h5>Current Product</h5></center> 
-           <hr>
-        <div class="wrapper">
-            <div class="row">
-                <span class="fw-semibold">Product name:</span>
-                <p class="fs-6">$5.00</p>
-            </div>
-        </div>
-        </div>
+      
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Select Quantity <span class="quantity_pos"></span></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" class="pos-form d-flex align-items-center flex-column">
+              
+          {% csrf_token %}
+          <h6 class="container container-fluid py-2" style="font-family: 'Barlow';">Current Stock: <span class="text-primary" id="curr_stock">5</span></h6>
+          <div class="d-inline-flex align-items-center mb-3">
+            
+            <button type="button" class="dcr btn btn-primary mx-2 p-2" style="height: 100%;"></button>
+            {{ form.quantity }}
+            <button type="button" class="incr btn btn-primary mx-2 p-2" style="height: 100%;"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          {{ form.product_id }}
+          <button type="submit" class="btn btn-primary d-inline-block w-75 p-2 mb-3" id="quantity_conf">Confirm</button>
+      </form>
+      </div>
+      
     </div>
+  </div>
 </div>
+    </div>
+  </main>
 {% endblock  %}
     

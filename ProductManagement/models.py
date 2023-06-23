@@ -34,7 +34,7 @@ class Product_crud(models.Model):
   Current_Stock = models.IntegerField(null=False)
   Max_Stock = models.IntegerField(null=False)
   Status = models.CharField(max_length=50,null=False,choices=status)
-  Image  = models.ImageField(upload_to='allimg',null=True,blank=True)
+  Image  = models.ImageField(upload_to='product/',null=True,blank=True)
   Date_Added = models.DateTimeField(default=timezone.now) 
   
  
